@@ -272,7 +272,7 @@ also acceptable.</p>
 <h3 id="adding-a-person-code-add-code-or-code-a-code"><a class="link" href="#adding-a-person-code-add-code-or-code-a-code">4.2. Adding a person: <code>add</code> or <code>a</code></a></h3>
 <div class="paragraph">
 <p>Adds a person to the address book<br>
-Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS b/BIRTHDAY [t/TAG]&#8230;&#8203;</code> or <code>a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS b/BIRTHDAY [t/TAG]&#8230;&#8203;</code></p>
+Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS b/BIRTHDAY v/AVATAR [t/TAG]&#8230;&#8203;</code> or <code>a n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS b/BIRTHDAY v/AVATAR [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -281,7 +281,7 @@ Format: <code>add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS b/BIRTHDAY [t/TAG]&#82
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-A person can have any number of tags (including 0)
+A person can have any number of tags (including 0).
 </td>
 </tr>
 </table>
@@ -292,10 +292,13 @@ A person can have any number of tags (including 0)
 <div class="ulist">
 <ul>
 <li>
-<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 b/01/01/1991</code></p>
+<p><code>add n/John Doe p/98765432 e/johnd@example.com a/John Street, Block 123, #01-01 b/01/01/1991</code></p>
 </li>
 <li>
-<p><code>a n/Betsy Crowe t/friend e/betsycrowe@example.com a/Newgate Prison p/1234567 b/02/02/1992 t/criminal</code></p>
+<p><code>a n/Betsy Crowe t/client e/betsycrowe@example.com a/Newgate Prison p/1234567 b/02/02/1992 t/criminal</code></p>
+</li>
+<li>
+<p>`a n/Charlie Chopin t/boss e/charliec@example.com a/Madysun Triangle Park p/98765432 b/02/03/2000 v/C:\Users\Charlie\Pictures\cc.png'</p>
 </li>
 </ul>
 </div>
@@ -311,7 +314,7 @@ Format: <code>list</code> or <code>l</code></p>
 <h3 id="editing-a-person-code-edit-code-or-code-e-code"><a class="link" href="#editing-a-person-code-edit-code-or-code-e-code">4.4. Editing a person : <code>edit</code> or <code>e</code></a></h3>
 <div class="paragraph">
 <p>Edits an existing person in the address book.<br>
-Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [t/TAG]&#8230;&#8203;</code> or <code>e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [t/TAG]&#8230;&#8203;</code></p>
+Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [t/TAG]&#8230;&#8203;</code> or <code>e INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [v/AVATAR] [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -346,8 +349,8 @@ Format: <code>edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [
 Edits the phone number and email address of the 1st person to be <code>91234567</code> and <code>johndoe@example.com</code> respectively.</p>
 </li>
 <li>
-<p><code>e 2 n/Betsy Crower t/</code><br>
-Edits the name of the 2nd person to be <code>Betsy Crower</code> and clears all existing tags.</p>
+<p><code>e 2 n/Betsy Crower v/http://example.com/profile.png t/</code><br>
+Edits the name of the 2nd person to be <code>Betsy Crower</code>, change the avatar and clears all existing tags.</p>
 </li>
 </ul>
 </div>
@@ -882,7 +885,7 @@ click <a href="https://go.java/index.html?intcmp=gojava-banner-java-com">here</a
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-24 10:56:07 +00:00
+Last updated 2017-10-24 12:49:25 +00:00
 </div>
 </div>
 </body>
