@@ -35,10 +35,10 @@
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">Undoing previous command : <code>undo</code></a></h3>
+<h3 id="undoing-previous-command-code-undo-code-or-code-u-code"><a class="link" href="#undoing-previous-command-code-undo-code-or-code-u-code">Undoing previous command : <code>undo</code> or <code>u</code></a></h3>
 <div class="paragraph">
 <p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code></p>
+Format: <code>undo</code> or <code>u</code></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -67,8 +67,8 @@ Format: <code>undo</code></p>
 <li>
 <p><code>select 1</code><br>
 <code>list</code><br>
-<code>undo</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
+<code>u</code><br>
+The <code>u</code> command fails as there are no undoable commands executed previously.</p>
 </li>
 <li>
 <p><code>delete 1</code><br>
@@ -80,10 +80,10 @@ The <code>undo</code> command fails as there are no undoable commands executed p
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">Redoing the previously undone command : <code>redo</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-redo-code-or-code-r-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-or-code-r-code">Redoing the previously undone command : <code>redo</code> or <code>r</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code></p>
+Format: <code>redo</code> or <code>r</code></p>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -105,8 +105,8 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <code>clear</code><br>
 <code>undo</code> (reverses the <code>clear</code> command)<br>
 <code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
+<code>r</code> (reapplies the <code>delete 1</code> command)<br>
+<code>r</code> (reapplies the <code>clear</code> command)<br></p>
 </li>
 </ul>
 </div>
@@ -129,12 +129,15 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-mechanism"><a class="link" href="#undo-redo-mechanism">Undo/Redo mechanism</a></h3>
+<h3 id="undo-redo-mechanism"><a class="link" href="#undo-redo-mechanism">Undo/Redo Mechanism</a></h3>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing and redoing of commands that modifies the state of the address book (e.g. <code>add</code>, <code>edit</code>). Such commands will inherit from <code>UndoableCommand</code>.</p>
+<p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing
+and redoing of commands that modifies the state of the address book (<em>e.g. <code>add</code>, <code>edit`</em>). Such commands will inherit
+from `UndoableCommand</code>.</p>
 </div>
 <div class="paragraph">
-<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead. The following diagram shows the inheritance diagram for commands:</p>
+<p><code>UndoRedoStack</code> only deals with <code>UndoableCommands</code>. Commands that cannot be undone will inherit from <code>Command</code> instead.
+The following diagram shows the inheritance diagram for commands:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -142,7 +145,15 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="paragraph">
-<p>As you can see from the diagram, <code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone, such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such as saving the state of the address book before execution. <code>UndoableCommand</code> contains the high-level algorithm for those extra tasks while the child classes implements the details of how to execute the specific command. Note that this technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
+<p><em>Figure 4.1.1 : Inheritance diagram for Undo/Redo command</em></p>
+</div>
+<div class="paragraph">
+<p><code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone,
+such as the <code>DeleteCommand</code>. Note that extra tasks need to be done when executing a command in an <em>undoable</em> way, such
+as saving the state of the address book before execution. <code>UndoableCommand</code> contains the high-level algorithm for those
+extra tasks while the child classes implements the details of how to execute the specific command. Note that this
+technique of putting the high-level algorithm in the parent class and lower-level steps of the algorithm in child
+classes is also known as the <a href="https://www.tutorialspoint.com/design_pattern/template_pattern.htm">template pattern</a>.</p>
 </div>
 <div class="paragraph">
 <p>Commands that are not undoable are implemented this way:</p>
@@ -183,7 +194,9 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 <p>Suppose that the user has just launched the application. The <code>UndoRedoStack</code> will be empty at the beginning.</p>
 </div>
 <div class="paragraph">
-<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th person in the address book. The current state of the address book is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the <code>undoStack</code> (the current state is saved together with the command).</p>
+<p>The user executes a new <code>UndoableCommand</code>, <code>delete 5</code>, to delete the 5th person in the address book. The current state
+of the address book is saved before the <code>delete 5</code> command executes. The <code>delete 5</code> command will then be pushed onto the
+<code>undoStack</code>. The current state is saved together with the command as shown:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -191,12 +204,19 @@ The <code>redo</code> command fails as there are no <code>undo</code> commands e
 </div>
 </div>
 <div class="paragraph">
-<p>As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may execute <code>add n/David &#8230;&#8203;</code> to add a new person.</p>
+<p><em>Figure 4.1.2</em></p>
+</div>
+<div class="paragraph">
+<p>As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may
+execute <code>add n/David &#8230;&#8203;</code> to add a new person like so:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/UndoRedoNewCommand1StackDiagram.png" alt="UndoRedoNewCommand1StackDiagram" width="800">
 </div>
+</div>
+<div class="paragraph">
+<p><em>Figure 4.1.3</em></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -214,12 +234,16 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 <p>The user now decides that adding the person was a mistake, and decides to undo that action using <code>undo</code>.</p>
 </div>
 <div class="paragraph">
-<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>. We will restore the address book to the state before the <code>add</code> command executed.</p>
+<p>We will pop the most recent command out of the <code>undoStack</code> and push it back to the <code>redoStack</code>. We will restore the
+address book to the state before the <code>add</code> command executed as shown:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/UndoRedoExecuteUndoStackDiagram.png" alt="UndoRedoExecuteUndoStackDiagram" width="800">
 </div>
+</div>
+<div class="paragraph">
+<p><em>Figure 4.1.4</em></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -228,11 +252,15 @@ If a command fails its execution, it will not be pushed to the <code>UndoRedoSta
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>undoStack</code> is empty, then there are no other commands left to be undone, and an <code>Exception</code> will be thrown when popping the <code>undoStack</code>.
+If the <code>undoStack</code> is empty, then there are no other commands left to be undone, and an <code>Exception</code> will be thrown when
+popping the <code>undoStack</code>.
 </td>
 </tr>
 </table>
 </div>
+</div>
+<div class="sect2">
+<h3 id="sequence-diagram"><a class="link" href="#sequence-diagram">Sequence Diagram</a></h3>
 <div class="paragraph">
 <p>The following sequence diagram shows how the undo operation works:</p>
 </div>
@@ -242,7 +270,11 @@ If the <code>undoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="paragraph">
-<p>The redo does the exact opposite (pops from <code>redoStack</code>, push to <code>undoStack</code>, and restores the address book to the state after the command is executed).</p>
+<p><em>Figure 4.2.1</em></p>
+</div>
+<div class="paragraph">
+<p>The redo does the exact opposite: pops from <code>redoStack</code>, push to <code>undoStack</code>, and restores the address book to the state
+after the command is executed.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -251,13 +283,16 @@ If the <code>undoStack</code> is empty, then there are no other commands left to
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-If the <code>redoStack</code> is empty, then there are no other commands left to be redone, and an <code>Exception</code> will be thrown when popping the <code>redoStack</code>.
+If the <code>redoStack</code> is empty, then there are no other commands left to be redone, and an <code>Exception</code> will be thrown when
+popping the <code>redoStack</code>.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>. This time the <code>redoStack</code> is no longer empty. It will be purged as it no longer make sense to redo the <code>add n/David</code> command (this is the behavior that most modern desktop applications follow).</p>
+<p>The user now decides to execute a new command, <code>clear</code>. As before, <code>clear</code> will be pushed into the <code>undoStack</code>. This
+time the <code>redoStack</code> is no longer empty. It will be purged as it no longer make sense to redo the <code>add n/David</code> command
+(this is the behavior that most modern desktop applications follow).</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -265,12 +300,19 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 </div>
 <div class="paragraph">
-<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code> rather than <code>UndoableCommand</code>, will not be added after execution:</p>
+<p><em>Figure 4.2.2</em></p>
+</div>
+<div class="paragraph">
+<p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code>
+rather than <code>UndoableCommand</code>, will not be added after execution:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/UndoRedoNewCommand3StackDiagram.png" alt="UndoRedoNewCommand3StackDiagram" width="800">
 </div>
+</div>
+<div class="paragraph">
+<p><em>Figure 4.2.3</em></p>
 </div>
 <div class="paragraph">
 <p>The following activity diagram summarize what happens inside the <code>UndoRedoStack</code> when a user executes a new command:</p>
@@ -280,53 +322,66 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 <img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="200">
 </div>
 </div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Implementation of <code>UndoableCommand</code><br>
-<strong>Alternative 1 (current choice):</strong> Add a new abstract method <code>executeUndoableCommand()</code><br>
-<strong>Pros:</strong> We will not lose any undone/redone functionality as it is now part of the default behaviour. Classes that deal with <code>Command</code> do not have to know that <code>executeUndoableCommand()</code> exist.<br>
+<p><em>Figure 4.2.4</em></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h3>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of <code>UndoableCommand</code>.<br>
+<strong>Alternative 1 (current choice):</strong> Add a new abstract method <code>executeUndoableCommand()</code>.<br>
+<strong>Pros:</strong> We will not lose any undone/redone functionality as it is now part of the default behaviour. Classes that deal
+with <code>Command</code> do not have to know that <code>executeUndoableCommand()</code> exist.<br>
 <strong>Cons:</strong> Hard for new developers to understand the template pattern.<br>
-<strong>Alternative 2:</strong> Just override <code>execute()</code><br>
+<strong>Alternative 2:</strong> Just override <code>execute()</code>.<br>
 <strong>Pros:</strong> Does not involve the template pattern, easier for new developers to understand.<br>
-<strong>Cons:</strong> Classes that inherit from <code>UndoableCommand</code> must remember to call <code>super.execute()</code>, or lose the ability to undo/redo.</p>
+<strong>Cons:</strong> Classes that inherit from <code>UndoableCommand</code> must remember to call <code>super.execute()</code>, or lose the ability to
+undo/redo.</p>
 </div>
 <hr>
 <div class="paragraph">
-<p><strong>Aspect:</strong> How undo &amp; redo executes<br>
+<p><strong>Aspect:</strong> How undo &amp; redo executes.<br>
 <strong>Alternative 1 (current choice):</strong> Saves the entire address book.<br>
 <strong>Pros:</strong> Easy to implement.<br>
 <strong>Cons:</strong> May have performance issues in terms of memory usage.<br>
 <strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.<br>
-<strong>Pros:</strong> Will use less memory (e.g. for <code>delete</code>, just save the person being deleted).<br>
+<strong>Pros:</strong> Will use less memory (<em>e.g. for <code>delete</code>, just save the person being deleted</em>).<br>
 <strong>Cons:</strong> We must ensure that the implementation of each individual command are correct.</p>
 </div>
 <hr>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Type of commands that can be undone/redone<br>
+<p><strong>Aspect:</strong> Type of commands that can be undone/redone.<br>
 <strong>Alternative 1 (current choice):</strong> Only include commands that modifies the address book (<code>add</code>, <code>clear</code>, <code>edit</code>).<br>
-<strong>Pros:</strong> We only revert changes that are hard to change back (the view can easily be re-modified as no data are lost).<br>
-<strong>Cons:</strong> User might think that undo also applies when the list is modified (undoing filtering for example), only to realize that it does not do that, after executing <code>undo</code>.<br>
+<strong>Pros:</strong> We only revert changes that are hard to change back (<em>the view can easily be re-modified as no data is
+lost</em>).<br>
+<strong>Cons:</strong> User might think that undo also applies when the list is modified (<em>undoing filtering for example</em>), only to
+realize that it does not do that, after executing <code>undo</code>.<br>
 <strong>Alternative 2:</strong> Include all commands.<br>
 <strong>Pros:</strong> Might be more intuitive for the user.<br>
-<strong>Cons:</strong> User have no way of skipping such commands if he or she just want to reset the state of the address book and not the view.<br>
-<strong>Additional Info:</strong> See our discussion  <a href="https://github.com/se-edu/addressbook-level4/issues/390#issuecomment-298936672">here</a>.</p>
+<strong>Cons:</strong> User have no way of skipping such commands if he or she just want to reset the state of the address book and
+not the view.<br>
+<strong>Additional Info:</strong> See our discussion
+<a href="https://github.com/se-edu/addressbook-level4/issues/390#issuecomment-298936672">here</a>.</p>
 </div>
 <hr>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Data structure to support the undo/redo commands<br>
-<strong>Alternative 1 (current choice):</strong> Use separate stack for undo and redo<br>
-<strong>Pros:</strong> Easy to understand for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.<br>
-<strong>Cons:</strong> Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>UndoRedoStack</code>.<br>
+<p><strong>Aspect:</strong> Data structure to support the undo/redo commands.<br>
+<strong>Alternative 1 (current choice):</strong> Use separate stack for undo and redo.<br>
+<strong>Pros:</strong> Easy to understand for new Computer Science student undergraduates to understand, who are likely to be the new
+incoming developers of our project.<br>
+<strong>Cons:</strong> Logic is duplicated twice. For example, when a new command is executed, we must remember to update both
+<code>HistoryManager</code> and <code>UndoRedoStack</code>.<br>
 <strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo<br>
 <strong>Pros:</strong> We do not need to maintain a separate stack, and just reuse what is already in the codebase.<br>
-<strong>Cons:</strong> Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.<br></p>
+<strong>Cons:</strong> Requires dealing with commands that have already been undone: We must remember to skip these commands.
+Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different
+things.<br></p>
 </div>
 <div class="paragraph">
 <p><mark>End of Extract</mark></p>
 </div>
 <hr>
-</div>
 </div>
 <div class="sect2">
 <h3 id="enhancement-proposed-add-command-code-remark-code"><a class="link" href="#enhancement-proposed-add-command-code-remark-code">Enhancement Proposed: Add command <code>remark</code></a></h3>
@@ -360,7 +415,7 @@ If the <code>redoStack</code> is empty, then there are no other commands left to
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-09-21 15:57:58 +00:00
+Last updated 2017-10-24 06:44:59 +00:00
 </div>
 </div>
 </body>
