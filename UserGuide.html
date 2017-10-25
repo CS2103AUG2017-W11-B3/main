@@ -463,6 +463,9 @@ See <a href="#partial-matching">Partial Matching</a> section for more details.</
 <li>
 <p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
 </li>
+<li>
+<p>When finding by name, the result will auto sort according to the position of the match. e.g. <code>find Bo</code> will list <code>Bo Alex</code> before <code>Holbo</code> and <code>Holbo</code> before <code>Alexander Bo</code></p>
+</li>
 </ul>
 </div>
 </div>
@@ -525,19 +528,42 @@ Returns any person with at least one of the tags <code>friends</code>, <code>fam
 <h4 id="partial-matching"><a class="link" href="#partial-matching">4.7.3. Partial matching</a></h4>
 <div class="paragraph">
 <p><code>Since v1.2</code><br>
-The Find command accepts partial matches by default, but only if it&#8217;s from the beginning of each word.<br>
-And it will not match if the keyword is longer than the entry.<br>
-Examples :</p>
+The Find command accepts partial matches by default.<br>
+Keywords <strong>will match</strong> entries if they are contained within those entries.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+However, vice-versa does not apply!
+i.e. Entries <strong>will not match</strong> keywords if the entries are contained within the keywords.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples :</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
 <p><code>find mel</code><br>
-Matches <code>Melissa</code> but not <code>Amelia</code></p>
+Matches <code>Melissa</code> and <code>Amelia</code></p>
+</li>
+<li>
+<p><code>find amelia</code><br>
+Matches <code>Amelia</code> but not <code>Melissa</code> or <code>Mel</code></p>
 </li>
 <li>
 <p><code>find leon</code><br>
 Matches <code>Leonard</code> but not <code>Leo</code></p>
+</li>
+<li>
+<p><code>find t/ frien</code><br>
+Matches any person with a tag that contains <code>frien</code>, e.g. <code>Friends</code> or <code>BestFriends</code></p>
 </li>
 </ul>
 </div>
@@ -885,7 +911,7 @@ click <a href="https://go.java/index.html?intcmp=gojava-banner-java-com">here</a
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-24 23:57:42 +00:00
+Last updated 2017-10-24 23:59:25 +00:00
 </div>
 </div>
 </body>

@@ -1037,10 +1037,10 @@ method to return <code>true</code>.<br></p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"> <span class="directive">public</span> <span class="directive">static</span> <span class="type">boolean</span> containsWordStartingWithIgnoreCase(<span class="predefined-type">String</span> sentence, <span class="predefined-type">String</span> word) {
+<pre class="CodeRay highlight"><code data-lang="java"> <span class="directive">public</span> <span class="directive">static</span> <span class="type">boolean</span> containsPartialIgnoreCase(<span class="predefined-type">String</span> sentence, <span class="predefined-type">String</span> word) {
         <span class="comment">//..check and prepare arguments..</span>
         <span class="keyword">for</span> (<span class="predefined-type">String</span> wordInSentence: wordsInPreppedSentence) {
-            <span class="keyword">if</span> (wordInSentence.regionMatches(<span class="predefined-constant">true</span>, <span class="integer">0</span>, preppedWord, <span class="integer">0</span>, preppedWord.length())) {
+            <span class="keyword">if</span> (wordInSentence.toLowerCase().contains(preppedWord.toLowerCase())) {
                 <span class="keyword">return</span> <span class="predefined-constant">true</span>;
             }
         }
@@ -1049,23 +1049,7 @@ method to return <code>true</code>.<br></p>
 </div>
 </div>
 <div class="paragraph">
-<p>By using <code>regionMatches</code> from 0 (<em>start of each word</em>) to the length of the query word, we allow the sentence word to
-still match with the query word, even if the sentence word is longer.<br>
-More precisely, the method will now return <code>true</code> as long as the sentence word and query word matches within the
-specified region (<em>start to query word&#8217;s length</em>).</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-This type of partial matching only matches from the start of each word. It won&#8217;t accept matches that start from the
-middle of the word. (<em>e.g. <code>find mel</code> will match <code>Melissa</code> but not `Amelia`</em>)
-</td>
-</tr>
-</table>
+<p>By using the <code>contains</code> method, we now allow the query word to be a substring of the sentence word.</p>
 </div>
 <div class="paragraph">
 <p>We then replace the use of the previous method in the Predicate classes in model
@@ -1087,13 +1071,13 @@ partial matching.</p>
 </div>
 <hr>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Type of partial matching.<br>
-<strong>Alternative 1 (current choice):</strong> Matches are required to be from the start of each word.<br>
+<p><strong>Aspect:</strong> Type of partial matching<br>
+<strong>Alternative 1 (current choice):</strong> Matches can be from anywhere in the word<br>
 <strong>Pros:</strong> Restricts the scope of search which increases relevancy but still giving enough flexibility for users.<br>
 <strong>Cons:</strong> Can be unintuitive, less powerful.<br>
-<strong>Alternative 2:</strong> Matches can be from anywhere in the word.<br>
-<strong>Pros:</strong> More intuitive way of searching, simpler to understand.<br>
-<strong>Cons:</strong> Search results become less relevant for short keywords.<br></p>
+<strong>Alternative 2:</strong> Matches are required to be from the start of each word.<br>
+<strong>Pros:</strong> Restricts the scope of search which increases relevancy but still giving enough flexibility for users.<br>
+<strong>Cons:</strong> Can be unintuitive, less powerful.<br></p>
 </div>
 </div>
 </div>
@@ -2036,7 +2020,7 @@ and modified.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-24 23:57:42 +00:00
+Last updated 2017-10-24 23:59:25 +00:00
 </div>
 </div>
 </body>
