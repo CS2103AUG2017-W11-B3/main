@@ -665,10 +665,49 @@ Selects the 1st person in the results of the <code>find</code> command.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>=== Sort the address book <code>In development for v1.5</code></p>
+<p>=== Sorting your contact list : <code>sort</code></p>
 </div>
 <div class="paragraph">
-<p>Contact list can be sorted in alphabetical order.</p>
+<p>Sorts the current list lexicographically by the given prefix, in the given order. If no prefix is given then shows default order.<br>
+Format : <code>sort [PREFIX] [ORDER]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Only the current list is sorted, there is currently no lasting sort on the whole address book.<br></p>
+</li>
+<li>
+<p>ORDER can either be <code>asc</code> for ascending or <code>des</code> for descending. If ORDER is omitted, the list is still sorted ascendingly<br></p>
+</li>
+<li>
+<p>PREFIX can be any prefix with the exception of <code>t/</code> and <code>v/</code>.<br></p>
+</li>
+<li>
+<p>If PREFIX is omitted, the current list is sorted in the order of insertion. You can still reverse the order by using <code>des</code> without any prefix.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>sort des</code><br>
+Sorts the list in reverse order of insertion (i.e. the list is now reversed)</p>
+</li>
+<li>
+<p><code>find t/ friends</code><br>
+<code>sort n/</code><br>
+Sorts the resulting list from the <code>find</code> command by name, in ascending order.<br>
+(i.e. the list is now a list of people who has a tag matching <code>friends</code> alphabetically by name.)</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>=== Set favourite contacts <code>In development for v1.5</code></p>
@@ -905,7 +944,7 @@ click <a href="https://go.java/index.html?intcmp=gojava-banner-java-com">here</a
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-31 20:41:51 +00:00
+Last updated 2017-10-31 23:36:28 +00:00
 </div>
 </div>
 </body>
