@@ -69,8 +69,8 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>K.N.S. AddressBook v1.3.0 is a free Java desktop application available on Windows and Mac OS X operating systems. It is
-designed for telemarketers who are bound to their desks, making many calls to clients with the office&#8217;s telephone, while on the same time opening their PC/laptop to find their clients' contact number.</p>
+<p>K.N.S. AddressBook v1.4.0 is a free Java desktop application available on Windows and Mac OS X operating systems. It is
+designed for freelancers who are bound to their desks, making many calls to clients with the office&#8217;s telephone, while on the same time opening their PC/laptop to find their clients' contact number.</p>
 </div>
 <div class="paragraph">
 <p>Most of the interactions with the application are done through an in-built Command Line Interface (CLI), which allows
@@ -291,7 +291,7 @@ A person can have any number of tags (including 0).
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<code>Since v1.3</code> Only the name field is mandatory, all other fields are optional.<br>
+<code>Since v1.4</code> Only the name field is mandatory, all other fields are optional.<br>
  With the exception of tags, all missing fields will have a placeholder value.
 </td>
 </tr>
@@ -539,7 +539,30 @@ Returns any person with at least one of the tags <code>friends</code>, <code>fam
 </div>
 </div>
 <div class="sect3">
-<h4 id="partial-matching"><a class="link" href="#partial-matching">4.7.3. Partial matching</a></h4>
+<h4 id="by-any-field"><a class="link" href="#by-any-field">4.7.3. By any field</a></h4>
+<div class="paragraph">
+<p>To find by other fields, use their respective prefixes. (<code>p/</code> for phone, <code>e/</code> for email, and so on)
+All fields save for avatar (<code>v/</code>) is searchable as of <code>v1.4</code>
+Phone (<code>p</code>) and email (<code>e</code>) only accepts full matches, not partial matches.</p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find p/ 1234567</code><br>
+Returns any person with the exact phone number <code>1234567</code></p>
+</li>
+<li>
+<p><code>find a/ Jurong</code><br>
+Returns any person with address containing the word <code>Jurong</code> (case-insensitive) in it.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="partial-matching"><a class="link" href="#partial-matching">4.7.4. Partial matching</a></h4>
 <div class="paragraph">
 <p><code>Since v1.2</code><br>
 The Find command accepts partial matches by default.<br>
@@ -580,12 +603,6 @@ Matches <code>Leonard</code> but not <code>Leo</code></p>
 Matches any person with a tag that contains <code>frien</code>, e.g. <code>Friends</code> or <code>BestFriends</code></p>
 </li>
 </ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="by-any-field"><a class="link" href="#by-any-field">4.7.4. By any field</a></h4>
-<div class="paragraph">
-<p><code>In development for v2.0</code></p>
 </div>
 </div>
 <div class="sect3">
@@ -717,7 +734,7 @@ Format : <code>sort [PREFIX] [ORDER]</code></p>
 <li>
 <p><code>list</code><br>
 <code>sort des</code><br>
-Sorts the list in reverse order of insertion (i.e. the list is now reversed)</p>
+Sorts the list in reverse order of insertion (i.e. the previous list is now reversed)</p>
 </li>
 <li>
 <p><code>find t/ friends</code><br>
@@ -964,7 +981,7 @@ click <a href="https://go.java/index.html?intcmp=gojava-banner-java-com">here</a
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-01 00:17:11 +00:00
+Last updated 2017-11-01 01:43:08 +00:00
 </div>
 </div>
 </body>
