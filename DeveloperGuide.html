@@ -887,30 +887,33 @@ the following 2 code snippets:</p>
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Subscribe</span>
 <span class="directive">private</span> <span class="type">void</span> handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
+    loadBlankPersonPage();
     logger.info(LogsCenter.getEventHandlingLogMessage(event));
-    loadPersonPage(event.getNewSelection().person);
+    selectedPersonCard = event.getNewSelection();
+    selectedPerson = selectedPersonCard.person;
+    isBlankPage = <span class="predefined-constant">false</span>;
+    loadPersonPage();
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p><strong>Code Snippet 1 (handlePersonPanelSelectionChangedEvent()):</strong> Whenever a contact is selected, an event will be
-triggered. The method will respond to the event by obtaining a ReadOnlyPerson variable (<em>which contains all the details
-of the contact</em>), and pass it into loadPersonPage().</p>
+triggered. The method will respond to the event by obtaining a PersonCard variable and ReadOnlyPerson variable (<em>which contains all the details of the contact</em>), and pass it into loadPersonPage().</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> loadPersonPage(ReadOnlyPerson person) {
-    name.setText(person.getName().fullName);
-    phone.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Phone: </span><span class="delimiter">&quot;</span></span> + person.getPhone().toString());
-    address.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Address: </span><span class="delimiter">&quot;</span></span> + person.getAddress().toString());
-        email.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Email: </span><span class="delimiter">&quot;</span></span> + person.getEmail().toString());
-        birthday.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Birthday: </span><span class="delimiter">&quot;</span></span> + person.getBirthday().toString());
-        tags.getChildren().clear();
-        person.getTags().forEach(tag -&gt; {
-                <span class="predefined-type">Label</span> tagLabel = <span class="keyword">new</span> <span class="predefined-type">Label</span>(tag.tagName);
-                tagLabel.setStyle(<span class="string"><span class="delimiter">&quot;</span><span class="content">-fx-background-color: </span><span class="delimiter">&quot;</span></span> + tag.tagColour);
-                tags.getChildren().add(tagLabel);
-        });
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> loadPersonPage() {
+    name.setText(selectedPerson.getName().fullName);
+    phone.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Phone: </span><span class="delimiter">&quot;</span></span> + selectedPerson.getPhone().toString());
+    address.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Address: </span><span class="delimiter">&quot;</span></span> + selectedPerson.getAddress().toString());
+    email.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Email: </span><span class="delimiter">&quot;</span></span> + selectedPerson.getEmail().toString());
+    birthday.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Birthday: </span><span class="delimiter">&quot;</span></span> + selectedPerson.getBirthday().toString());
+    avatar.setImage(SwingFXUtils.toFXImage(selectedPerson.getAvatar().getImage(), <span class="predefined-constant">null</span>));
+    selectedPerson.getTags().forEach(tag -&gt; {
+        <span class="predefined-type">Label</span> tagLabel = <span class="keyword">new</span> <span class="predefined-type">Label</span>(tag.tagName);
+        tagLabel.setStyle(<span class="string"><span class="delimiter">&quot;</span><span class="content">-fx-background-color: </span><span class="delimiter">&quot;</span></span> + tag.tagColour);
+        tags.getChildren().add(tagLabel);
+    });
 }</code></pre>
 </div>
 </div>
@@ -934,7 +937,7 @@ Upon opening the application, no contact details will be displayed since no cont
 <div class="sect3">
 <h4 id="layout-implementation"><a class="link" href="#layout-implementation">4.4.2. Layout Implementation</a></h4>
 <div class="paragraph">
-<p>The layout for PersonPanel is specified in PersonPanel.fxml. Visually, it can be broken down into 2 parts as shown:</p>
+<p>The layout for PersonPanel is specified in <code>PersonPanel.fxml</code>. Visually, it can be broken down into 2 parts as shown:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -946,14 +949,17 @@ Upon opening the application, no contact details will be displayed since no cont
 </div>
 <div class="paragraph">
 <p><strong>Part 1 (primaryDetails):</strong> This is subdivided into parts A and B. Part A contains the avatar picture of the contact.
-At the moment, there is a placeholder image. In the future, we will implement support for custom avatars.
-Part B contains the Name and Tags of the contact, which we found to be important in recognising a displayed contact
+Clicking on the avatar picture will cause a new <code>AvatarWindow</code> to be generated, which allows users to change the current
+avatar picture of the selected contact. More information about the implementation of <code>Avatar</code> can be found in the next section.</p>
+</div>
+<div class="paragraph">
+<p>Part B contains the Name and Tags of the contact, which we found to be important in recognising a displayed contact
 quickly. Hence, they are in a larger font in order to stand out.</p>
 </div>
 <div class="paragraph">
 <p><strong>Part 2 (secondaryDetails):</strong> This displays the Address, Email, Contact Number and Birthday of the contact. As these
 details are less important than the Name and Tags, they are placed below and are in a smaller font. At the moment, this
-section appears simple but empty. We plan to implement more features, such as a "Notes about Contact" and
+section appears simple but empty. We plan to implement more features for v2.0, such as a "Notes about Contact" and
 "Birthday Countdown".</p>
 </div>
 </div>
@@ -985,8 +991,8 @@ contact&#8217;s details.<br>
 <p><strong>Aspect:</strong> Addition of Icons for secondaryDetails.<br>
 <strong>Alternative 1 (current choice):</strong> Place icons on the left of each contact detail.<br>
 <strong>Pros:</strong> Quick to implement and makes it easier for user to differentiate between each contact detail. Icons can be
-easily taken from Google&#8217;s Material.io website.<br>
-<strong>Cons:</strong> N/A<br>
+easily taken from Google&#8217;s Material Design.<br>
+<strong>Cons:</strong> If we were to include more contact details (<em>e.g. social media links</em>) in the future, then we would have to keep adding more icons; relevant icons may not be found on Google&#8217;s Material Design. <br>
 <strong>Alternative 2:</strong> Use different colours for each contact detail.<br>
 <strong>Pros:</strong> Even more quick to implement since it only involves CSS changes.<br>
 <strong>Cons:</strong> Bad idea design-wise because it violates the Triadic Colour Scheme. It could make the application look less
@@ -2142,7 +2148,7 @@ and modified.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-02 06:10:35 +00:00
+Last updated 2017-11-02 07:16:13 +00:00
 </div>
 </div>
 </body>
