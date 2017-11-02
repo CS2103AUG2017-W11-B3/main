@@ -258,11 +258,10 @@ popping the <code>undoStack</code>.
 </tr>
 </table>
 </div>
-</div>
-<div class="sect2">
-<h3 id="sequence-diagram"><a class="link" href="#sequence-diagram">Sequence Diagram</a></h3>
+<div class="sect3">
+<h4 id="sequence-diagram"><a class="link" href="#sequence-diagram">Sequence Diagram</a></h4>
 <div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
+<p>The following <a href="#sequence-diagram">sequence diagram </a>shows how the undo operation works:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -270,7 +269,7 @@ popping the <code>undoStack</code>.
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.2.1</em></p>
+<p><em>Figure 4.1.1.1</em></p>
 </div>
 <div class="paragraph">
 <p>The redo does the exact opposite: pops from <code>redoStack</code>, push to <code>undoStack</code>, and restores the address book to the state
@@ -300,7 +299,7 @@ time the <code>redoStack</code> is no longer empty. It will be purged as it no l
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.2.2</em></p>
+<p><em>Figure 4.1.1.2</em></p>
 </div>
 <div class="paragraph">
 <p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code>
@@ -312,7 +311,7 @@ rather than <code>UndoableCommand</code>, will not be added after execution:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.2.3</em></p>
+<p><em>Figure 4.1.1.3</em></p>
 </div>
 <div class="paragraph">
 <p>The following activity diagram summarize what happens inside the <code>UndoRedoStack</code> when a user executes a new command:</p>
@@ -323,11 +322,11 @@ rather than <code>UndoableCommand</code>, will not be added after execution:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.2.4</em></p>
+<p><em>Figure 4.1.1.4</em></p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h3>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation of <code>UndoableCommand</code>.<br>
 <strong>Alternative 1 (current choice):</strong> Add a new abstract method <code>executeUndoableCommand()</code>.<br>
@@ -383,6 +382,7 @@ things.<br></p>
 </div>
 <hr>
 </div>
+</div>
 <div class="sect2">
 <h3 id="enhancement-proposed-add-command-code-remark-code"><a class="link" href="#enhancement-proposed-add-command-code-remark-code">Enhancement Proposed: Add command <code>remark</code></a></h3>
 <div class="paragraph">
@@ -415,7 +415,7 @@ things.<br></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-02 07:44:06 +00:00
+Last updated 2017-11-02 09:22:48 +00:00
 </div>
 </div>
 </body>
