@@ -51,9 +51,10 @@
 <li><a href="#design-considerations">4.3. Design Considerations</a></li>
 <li><a href="#person-panel">4.4. Person Panel</a></li>
 <li><a href="#partial-find">4.5. Partial Find</a></li>
-<li><a href="#add-tag">4.6. Add Tag</a></li>
-<li><a href="#logging">4.7. Logging</a></li>
-<li><a href="#configuration">4.8. Configuration</a></li>
+<li><a href="#find-by-all-field">4.6. Find by All Field</a></li>
+<li><a href="#add-tag-and-delete-tag">4.7. Add Tag and Delete Tag</a></li>
+<li><a href="#logging">4.8. Logging</a></li>
+<li><a href="#configuration">4.9. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -1082,20 +1083,113 @@ partial matching.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-tag"><a class="link" href="#add-tag">4.6. Add Tag</a></h3>
+<h3 id="find-by-all-field"><a class="link" href="#find-by-all-field">4.6. Find by All Field</a></h3>
 <div class="paragraph">
-<p>The add tag command is facilitated by the AddTagCommand, which is useful for adding a tag to a person inside the
-address book.</p>
+<p>The find by all field feature is implemented by adding one argument, prefix of field that want to be searched, to the
+<code>find</code> command parameter. If the user does not specify the prefix, the address book will automatically search the query
+in the name field. The FindCommandParser will parse the input given by the user. The mechanism to find by each field is
+implemented in &lt;field name&gt;ContainsKeywordPredicate class (i.e. NameContainsKeywordPredicate,
+AddressContainsKeywordPredicate) inside Model component.</p>
 </div>
 <div class="sect3">
 <h4 id="java-implementation-2"><a class="link" href="#java-implementation-2">4.6.1. Java Implementation</a></h4>
 <div class="paragraph">
-<p>AddTagCommand is a command. As AddTagCommand modifies the state of the address book (<em>adding a tag to a contact in the
-address book</em>), AddTagCommand inherits UndoableCommands. Therefore, users can undo/redo their previously
-entered AddTagCommand.</p>
+<p>The FindCommandParser is now able to parse the additional prefix argument, as shown in the code snippet below:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> FindCommand parse(<span class="predefined-type">String</span> args) <span class="directive">throws</span> <span class="exception">ParseException</span> {
+        <span class="comment">// make sure that the argument is valid</span>
+        <span class="comment">// store the prefix inside String 'toSearch'</span>
+        <span class="comment">// store the search query inside array of string 'keyword'</span>
+
+        <span class="keyword">if</span> (toSearch.equals(PREFIX_TAG.getPrefix())) {
+            <span class="keyword">return</span> <span class="keyword">new</span> FindCommand(<span class="keyword">new</span> TagListContainsKeywordsPredicate(<span class="predefined-type">Arrays</span>.asList(keywords)));
+        } <span class="keyword">else</span> <span class="keyword">if</span> (toSearch.equals(PREFIX_PHONE.getPrefix())) {
+            <span class="keyword">return</span> <span class="keyword">new</span> FindCommand(<span class="keyword">new</span> PhoneContainsKeywordsPredicate(<span class="predefined-type">Arrays</span>.asList(keywords)));
+        } <span class="keyword">else</span> <span class="keyword">if</span> (toSearch.equals(PREFIX_EMAIL.getPrefix())) {
+            <span class="keyword">return</span> <span class="keyword">new</span> FindCommand(<span class="keyword">new</span> EmailContainsKeywordsPredicate(<span class="predefined-type">Arrays</span>.asList(keywords)));
+        } <span class="keyword">else</span> <span class="keyword">if</span> (toSearch.equals(PREFIX_ADDRESS.getPrefix())) {
+            <span class="keyword">return</span> <span class="keyword">new</span> FindCommand(<span class="keyword">new</span> AddressContainsKeywordsPredicate(<span class="predefined-type">Arrays</span>.asList(keywords)));
+        } <span class="keyword">else</span> <span class="keyword">if</span> (toSearch.equals(PREFIX_BIRTHDAY.getPrefix())) {
+            <span class="keyword">return</span> <span class="keyword">new</span> FindCommand(<span class="keyword">new</span> BirthdayContainsKeywordsPredicate(<span class="predefined-type">Arrays</span>.asList(keywords)));
+        } <span class="keyword">else</span> {
+            <span class="keyword">return</span> <span class="keyword">new</span> FindCommand(<span class="keyword">new</span> NameContainsKeywordsPredicate(<span class="predefined-type">Arrays</span>.asList(keywords)));
+        }
+    }</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>AddTagCommand is implemented in this way:</p>
+<p>After FindCommandParser parse the arguments, it will call the &lt;field name&gt;ContainsKeywordsPredicate class for each
+respective field.</p>
+</div>
+<div class="paragraph">
+<p>All contacts with partial matches will appear on the search result, implemented in the method below for phone field.
+The method is similar for other field.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">boolean</span> test(ReadOnlyPerson person) {
+        <span class="keyword">return</span> keywords.stream().anyMatch(keyword -&gt; StringUtil
+                .containsWordPartialIgnoreCase(person.getPhone().value, keyword));
+    }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.6.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Implementation of find by all field<br>
+<strong>Alternative 1 (current choice):</strong> Enables user to find by all field (name, phone, email, address, birthday, and
+tag).<br>
+<strong>Pros:</strong> Easier for user to find their contacts when the user does not remember their contact&#8217;s name, instead they
+remember the contacts' details (such as address or birthday). This feature is useful for a broader range of purpose,
+for example when the user wants to send a birthday wishes to their contacts, the user can easily find by using
+birthday field.<br>
+<strong>Cons:</strong> Need to type the prefix of the field that want to be searched.<br>
+<strong>Alternative 2:</strong> Find by name only.<br>
+<strong>Pros:</strong> Some people only remember their contact&#8217;s name, and find by all field feature might not be useful for them as
+they don&#8217;t remember their contact&#8217;s details.<br>
+<strong>Cons:</strong> User could not find their contact details when they do not remember their contact&#8217;s name.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Find result upon executing <code>find</code> command.<br>
+<strong>Alternative 1 (current choice):</strong> All contacts with partial match with the find query will appear.<br>
+<strong>Pros:</strong> With less restrictive requirement, users can find a broad range of contacts when they are searching using a
+global keyword. For example, a user can find all their contacts who lived in "Clementi" when using this alternative.<br>
+<strong>Cons:</strong> More contacts will appear on the find result, some of them might not be the target contact that the user
+wants to find.<br>
+<strong>Alternative 2:</strong> Only contacts with exact match will appear.<br>
+<strong>Pros:</strong> Less contacts will appear on the find result, easier to find the exact person while searching for a single
+person.<br>
+<strong>Cons:</strong> It will be hard for a forgetful user to find their contacts as they may remember their contact details'
+partially. This alternative is also more cumbersome when applied to find by address, as user need to type the full
+address of their contact.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="add-tag-and-delete-tag"><a class="link" href="#add-tag-and-delete-tag">4.7. Add Tag and Delete Tag</a></h3>
+<div class="paragraph">
+<p>Add tag and delete tag mechanism is facilitated by the <code>addtag</code> command and <code>deletetag</code> command, or their equivalent
+aliases <code>at</code> and <code>dt</code>, which is useful for adding and deleting a tag in a person&#8217;s tag list. On previous versions
+before Add and Delete tag feature was introduced, users are able to change a person&#8217;s tag list by using <code>edit</code> command.
+Using <code>edit</code> command to add and delete a tag is quite cumbersome as users need to retype all the current tags that they
+didn&#8217;t want to edit. <code>addtag</code> command and <code>deletetag</code> command enables user to add and delete a tag using only a single
+command, without retyping all the current tags.</p>
+</div>
+<div class="sect3">
+<h4 id="java-implementation-3"><a class="link" href="#java-implementation-3">4.7.1. Java Implementation</a></h4>
+<div class="paragraph">
+<p>As <code>addtag</code> and <code>deletetag</code> are commands, their implementations are a part of Logic component in the address book.
+The implementation of add tag and delete tag can be found in AddTagCommand and DeleteTagCommand. AddTagCommand and
+DeleteTagCommand inherits UndoableCommands, as they modify the state of the address book (<em>adding and deleting a
+person&#8217;s tag in the address book</em>). Therefore, users can undo/redo their previously entered <code>addtag</code> and <code>deletetag</code>
+command.</p>
+</div>
+<div class="paragraph">
+<p><code>addtag</code> command is implemented in this way:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1108,7 +1202,7 @@ entered AddTagCommand.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>AddTagCommand can be used by calling the method with an index and a string of tag name that will be added, shown by
+<p><code>addtag</code> command can be used by calling the method with an index and a string of tag name that will be added, shown by
 this code snippet:</p>
 </div>
 <div class="listingblock">
@@ -1122,26 +1216,54 @@ this code snippet:</p>
 }</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Similar to <code>addtag</code> command, <code>deletetag</code> command is implemented in this way:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">DeleteTagCommand</span> <span class="directive">extends</span> UndoableCommand {
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> CommandResult executeUndoableCommand() <span class="directive">throws</span> CommandException {
+        <span class="comment">// ... list logic ...</span>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>deletetag</code> command can be used by calling the method with an index and a string of tag name that will be added, just
+like <code>addtag</code> command, shown by the following code snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> DeleteTagCommand(Index index, <span class="predefined-type">Set</span>&lt;Tag&gt; deletedTag) {
+    requireNonNull(index);
+    requireNonNull(deletedTag);
+
+    <span class="local-variable">this</span>.index = index;
+    <span class="local-variable">this</span>.addedTag = deletedTag;
+}</code></pre>
+</div>
+</div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.7.2. Design Considerations</a></h4>
 <div class="paragraph">
-<p><strong>Aspect:</strong> Implementation of AddTagCommand<br>
-<strong>Alternative 1 (current choice):</strong> Implementing a new command AddTagCommand instead of using the existing
+<p><strong>Aspect:</strong> Implementation of AddTagCommand and DeleteTagCommand<br>
+<strong>Alternative 1 (current choice):</strong> Implementing a new command <code>addtag</code> and <code>deletetag</code> instead of using the existing
 Edit command. <br>
-<strong>Pros:</strong> Users can add a single tag only by typing the new tag that they want to assign to a contact. <br>
-<strong>Cons:</strong> Currently AddTagCommand could only add a single new tag every time it is executed (<em>future enhancement
-will enable AddTagCommand to add more than 1 tag when executed</em>).<br>
-<strong>Alternative 2:</strong> Use existing Edit command to add a single tag to a person in the address book.<br>
+<strong>Pros:</strong> Users can add and delete a single tag only by typing the new tag that they want to assign or remove from
+a contact. <br>
+<strong>Cons:</strong> Currently <code>addtag</code> and <code>deletetag</code> could only add and delete a single tag every time it is executed (<em>future
+enhancement will enable <code>addtag</code> and <code>deletetag</code> to add and delete more than 1 tag when executed</em>).<br>
+<strong>Alternative 2:</strong> Use existing Edit command to add or delete a single tag from a person in the address book.<br>
 <strong>Pros:</strong> Less command to remember.<br>
-<strong>Cons:</strong> Users need to type all existing tags added by the new tag when they are using Edit command. There is a
-possibility of some error that can be avoided when using AddTagCommand, such as mistyping the existing tags or not
-adding a complete set of existing tags.</p>
+<strong>Cons:</strong> Users need to retype all existing tags they want to keep when they are using <code>edit</code> command. Users might
+mistype existing tags or not typing a complete set of existing tags while using <code>edit</code> command.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.7. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and
 logging destinations.</p>
@@ -1183,7 +1305,7 @@ just its size.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuration"><a class="link" href="#configuration">4.8. Configuration</a></h3>
+<h3 id="configuration"><a class="link" href="#configuration">4.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file
 (<em>default:</em> <code>config.json</code>).</p>
@@ -2020,7 +2142,7 @@ and modified.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-01 01:49:00 +00:00
+Last updated 2017-11-02 06:10:35 +00:00
 </div>
 </div>
 </body>
