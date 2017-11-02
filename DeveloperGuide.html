@@ -471,8 +471,8 @@ components.
 <div class="paragraph">
 <p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are
 in the <code>src/main/resources/view</code> folder. For example, the layout of the
-<a href="https://github.com/CS2103AUG2017-W11-B3/main//src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in
-<a href="https://github.com/CS2103AUG2017-W11-B3/main//src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+<a href="https://github.com/CS2103AUG2017-W11-B3/main/blob/master/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in
+<a href="https://github.com/CS2103AUG2017-W11-B3/main/blob/master/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>UI</code> component,</p>
@@ -1217,7 +1217,7 @@ method to return <code>true</code>.<br></p>
 </div>
 <div class="paragraph">
 <p>We then replace the use of the previous method in the Predicate classes in model
-(<em>e.g. `NameContainsKeywordsPredicate`</em>) with the new method so that the Find command actually uses partial matching.</p>
+(<em>e.g.`NameContainsKeywordsPredicate`</em>) with the new method so that the Find command actually uses partial matching.</p>
 </div>
 <div class="sect3">
 <h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.1. Design Considerations</a></h4>
@@ -1237,8 +1237,8 @@ partial matching.</p>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Type of partial matching<br>
 <strong>Alternative 1 (current choice):</strong> Matches can be from anywhere in the word<br>
-<strong>Pros:</strong> Restricts the scope of search which increases relevancy but still giving enough flexibility for users.<br>
-<strong>Cons:</strong> Can be unintuitive, less powerful.<br>
+<strong>Pros:</strong> More intuitive way of searching, simpler to understand.<br>
+<strong>Cons:</strong> Search results become less relevant for short keywords. (<em>Mitigated by sorting the results based on match position</em>)<br>
 <strong>Alternative 2:</strong> Matches are required to be from the start of each word.<br>
 <strong>Pros:</strong> Restricts the scope of search which increases relevancy but still giving enough flexibility for users.<br>
 <strong>Cons:</strong> Can be unintuitive, less powerful.<br></p>
@@ -2325,7 +2325,7 @@ and modified.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-02 18:49:46 +00:00
+Last updated 2017-11-02 21:42:11 +00:00
 </div>
 </div>
 </body>
