@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.3">
+<title>Stanley Tay - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Stanley Tay - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-k-n-s-addressbook"><a class="link" href="#project-k-n-s-addressbook">Project: K.N.S. AddressBook</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>K.N.S. AddressBook is a Java desktop address book application created by <strong>Team W11-B3</strong> during the course of <strong>CS2103T
+Software Engineering</strong> in AY2017/8 Semester 1.</p>
+</div>
+<div class="paragraph">
+<p><strong>Code Contributed</strong>:
+ [<a href="https://github.com/CS2103AUG2017-W11-B3/main/blob/master/collated/main/teclu.md">Functional Code</a>]
+ [<a href="https://github.com/CS2103AUG2017-W11-B3/main/blob/master/collated/test/teclu.md">Test Code</a>]</p>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-person-panel"><a class="link" href="#enhancement-added-person-panel">Enhancement Added: Person Panel</a></h3>
+<div class="sect3">
+<h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="person-panel"><a class="link" href="#person-panel">Person Panel</a></h3>
+<div class="paragraph">
+<p>This is where you will find a selected contact&#8217;s information (<em>name, address, phone number, etc.</em>) displayed neatly on
+a single page. When you click on the currently displayed <a href="avatar">Avatar</a> of the contact, a new window will pop-up like so:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UiPersonPanel.png" alt="UiPersonPanel" width="497">
+</div>
+</div>
+<div class="paragraph">
+<p>When you click <code>load</code>, you will be given the option to select an image (<em>either in .JPG or .PNG format</em>) stored on
+your computer. Afterwards, clicking <code>save</code> will let you replace the current Avatar of the contact.</p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+<div class="sect3">
+<h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
+<div class="paragraph">
+<p>Previously, the <code>Person Card</code> was the only thing that showed all the details of a contact. It was too small to fit all
+of the text. Aesthetically, this is not good because information should not be crammed into a small area. Thus, I
+created a <code>Person Panel</code> which shows all the contact&#8217;s details in one page in order to improve aesthetic design and
+readability.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: Developer Guide]</mark></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="person-panel-2"><a class="link" href="#person-panel-2">Person Panel</a></h3>
+<div class="paragraph">
+<p>The PersonPanel replaces the previous BrowserPanel, and is a crucial part of <code>MainWindow</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="java-implementation"><a class="link" href="#java-implementation">Java Implementation</a></h4>
+<div class="paragraph">
+<p>By taking advantage of the <code>java.util.logging package</code>, PersonPanel is able to display all of the details of a contact
+(<em>name, address, email, contact number, birthday, tags</em>) selected in <code>PersonCard</code>. This implementation can be seen from
+the following 2 code snippets:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Subscribe</span>
+<span class="directive">private</span> <span class="type">void</span> handlePersonPanelSelectionChangedEvent(PersonPanelSelectionChangedEvent event) {
+    loadBlankPersonPage();
+    logger.info(LogsCenter.getEventHandlingLogMessage(event));
+    selectedPersonCard = event.getNewSelection();
+    selectedPerson = selectedPersonCard.person;
+    isBlankPage = <span class="predefined-constant">false</span>;
+    loadPersonPage();
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Code Snippet 1 (<code>handlePersonPanelSelectionChangedEvent()</code>):</strong> Whenever a contact is selected, an event will be
+triggered. The method will respond to the event by obtaining a PersonCard variable and ReadOnlyPerson variable (<em>which contains all the details of the contact</em>), and pass it into loadPersonPage().</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">private</span> <span class="type">void</span> loadPersonPage() {
+    name.setText(selectedPerson.getName().fullName);
+    phone.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Phone: </span><span class="delimiter">&quot;</span></span> + selectedPerson.getPhone().toString());
+    address.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Address: </span><span class="delimiter">&quot;</span></span> + selectedPerson.getAddress().toString());
+    email.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Email: </span><span class="delimiter">&quot;</span></span> + selectedPerson.getEmail().toString());
+    birthday.setText(<span class="string"><span class="delimiter">&quot;</span><span class="content">Birthday: </span><span class="delimiter">&quot;</span></span> + selectedPerson.getBirthday().toString());
+    avatar.setImage(SwingFXUtils.toFXImage(selectedPerson.getAvatar().getImage(), <span class="predefined-constant">null</span>));
+    selectedPerson.getTags().forEach(tag -&gt; {
+        <span class="predefined-type">Label</span> tagLabel = <span class="keyword">new</span> <span class="predefined-type">Label</span>(tag.tagName);
+        tagLabel.setStyle(<span class="string"><span class="delimiter">&quot;</span><span class="content">-fx-background-color: </span><span class="delimiter">&quot;</span></span> + tag.tagColour);
+        tags.getChildren().add(tagLabel);
+    });
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Code Snippet 2 (<code>loadPersonPage()</code>):</strong> The ReadOnlyPerson variable passed into loadPersonPage can then be used to
+extract the contact&#8217;s details for display; the UI will be updated accordingly to reflect these changes.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Upon opening the application, no contact details will be displayed since no contact has been selected yet.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="layout-implementation"><a class="link" href="#layout-implementation">Layout Implementation</a></h4>
+<div class="paragraph">
+<p>The layout for PersonPanel is specified in <code>PersonPanel.fxml</code>. Visually, it can be broken down into 2 parts as shown:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/PersonPanelLayout.png" alt="PersonPanelLayout" width="760">
+</div>
+</div>
+<div class="paragraph">
+<p><em>Figure 4.2.2.1: Visual breakdown of PersonPanel</em></p>
+</div>
+<div class="paragraph">
+<p><strong>Part 1 (primaryDetails):</strong> This is subdivided into parts A and B. Part A contains the <a href="#avatar">avatar</a> picture of the contact.
+Clicking on the avatar picture will cause a new <code>AvatarWindow</code> to be generated, which allows users to change the current
+avatar picture of the selected contact. More information about the implementation of <code>Avatar</code> can be found in the next section.</p>
+</div>
+<div class="paragraph">
+<p>Part B contains the Name and Tags of the contact, which we found to be important in recognising a displayed contact
+quickly. Hence, they are in a larger font in order to stand out.</p>
+</div>
+<div class="paragraph">
+<p><strong>Part 2 (secondaryDetails):</strong> This displays the Address, Email, Contact Number and Birthday of the contact. As these
+details are less important than the Name and Tags, they are placed below and are in a smaller font. At the moment, this
+section appears simple but empty. We plan to implement more features for v2.0, such as a "Notes about Contact" and
+"Birthday Countdown".</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Display of Contact&#8217;s Details.<br>
+<strong>Alternative 1 (current choice):</strong> Replace BrowserPanel with PersonPanel, which displays all of the contacts details.
+Remove all details but Name and Tags from PersonCard. <br>
+<strong>Pros:</strong> We can build upon PersonPanel and add more features to it, that the BrowserPanel could not achieve. <br>
+<strong>Cons:</strong> PersonPanel will not be able to display personal web pages (<em>e.g. Contact&#8217;s Social Media page</em>).<br>
+<strong>Alternative 2:</strong> Keep BrowserPanel and use HTML files to display contact details instead.<br>
+<strong>Pros:</strong> No need to modify existing code; instead just figure out a way to edit and display HTML files that show the
+contact&#8217;s details.<br>
+<strong>Cons:</strong> May take too long to implement since we are not familiar with how we can do so.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Display of Tags In PersonPanel (<em>and PersonCard</em>).<br>
+<strong>Alternative 1 (current choice):</strong> Randomly colourise tags to make them distinct.<br>
+<strong>Pros:</strong> Quick to implement and makes it easier for user to differentiate between tags.<br>
+<strong>Cons:</strong> Tags are always changing colour for each new instance of the application; may seem confusing.<br>
+<strong>Alternative 2:</strong> Keep the previous blue colour for all tags.<br>
+<strong>Pros:</strong> Consistent and simple; no work is needed to be done.<br>
+<strong>Cons:</strong> Takes users a longer time to differentiate between tags.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Addition of Icons for secondaryDetails.<br>
+<strong>Alternative 1 (current choice):</strong> Place icons on the left of each contact detail.<br>
+<strong>Pros:</strong> Quick to implement and makes it easier for user to differentiate between each contact detail. Icons can be
+easily taken from Google&#8217;s Material Design.<br>
+<strong>Cons:</strong> If we were to include more contact details (<em>e.g. social media links</em>) in the future, then we would have to keep adding more icons; relevant icons may not be found on Google&#8217;s Material Design. <br>
+<strong>Alternative 2:</strong> Use different colours for each contact detail.<br>
+<strong>Pros:</strong> Even more quick to implement since it only involves CSS changes.<br>
+<strong>Cons:</strong> Bad idea design-wise because it violates the <a href="#tradic-colour-scheme">Triadic Colour Scheme</a>. It could make the application look less professional and unattractive.</p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-avatar"><a class="link" href="#enhancement-added-avatar">Enhancement Added: Avatar</a></h3>
+<div class="sect3">
+<h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><code>Avatar</code> is the contact&#8217;s display picture that can be found in the <code>Person Panel</code>. When using the <code>add</code> or <code>edit</code> command,
+you can change the <code>Avatar</code> by entering a valid URL or file path on the computer. If no URL or file path is provided,
+a default placeholder <code>Avatar</code> is created.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, clicking on the display picture in <code>Person Panel</code> will bring up a GUI upload window for users to specify
+a picture to be used in their computer.</p>
+</div>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="justification-2"><a class="link" href="#justification-2">Justification</a></h4>
+<div class="paragraph">
+<p>It is important to know what your contact looks like, especially so if you do not meet him/her frequently. Also, most
+freelancers have many clients to keep up with; it is likely that they may forget how their client looks like over time.</p>
+</div>
+<div class="paragraph">
+<p>The alternative way of editing the <code>Avatar</code> is useful for users who are unsure as to how to get the actual file path of
+the image found in their computer. Also, the file path may be very long, and this will cause the command box to be
+overfilled with text (<em>causing parts of the text to be hidden</em>). This can be frustrating for users who would want to
+check whether they have entered the correct details in the <code>add</code> or <code>edit</code> command.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: Developer Guide]</mark></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="avatar"><a class="link" href="#avatar">Avatar</a></h3>
+<div class="paragraph">
+<p>The Avatar class is a new contact detail that displays a display picture obtained
+via a valid Uniform Resource Locator (URL) or a local directory path in your computer.
+If no display picture is assigned to the contact, then creates a default placeholder image.
+In order for the user to upload an avatar for the contact, he/she can use the Add command or Graphical
+User Interface (GUI) upload (<code>AvatarWindow</code>) to do so.</p>
+</div>
+<div class="sect3">
+<h4 id="java-implementation-code-avatar-code"><a class="link" href="#java-implementation-code-avatar-code">Java Implementation: <code>Avatar</code></a></h4>
+<div class="paragraph">
+<p>The display and storage of a display picture can be seen in the following code snippets:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> Avatar() {
+    AvatarUtil placeholder = <span class="keyword">new</span> AvatarUtil();
+    image = placeholder.getPlaceholderAvatar();
+    value = <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>;
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Code Snippet 1 (<code>Avatar()</code>):</strong> The default constructor for Avatar is used when no display
+picture is assigned to a newly added contact. The default placeholder avatar is generated
+with <code>AvatarUtil</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> Avatar(<span class="predefined-type">String</span> url) <span class="directive">throws</span> IllegalValueException {
+    <span class="keyword">try</span> {
+        <span class="keyword">if</span> (url.isEmpty()) {
+            AvatarUtil placeholder = <span class="keyword">new</span> AvatarUtil();
+            image = placeholder.getPlaceholderAvatar();
+            value = <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>;
+        } <span class="keyword">else</span> {
+            <span class="predefined-type">File</span> defaultAvatar = <span class="keyword">new</span> <span class="predefined-type">File</span>(url);
+
+            <span class="keyword">if</span> (isValidUrl(url)) {
+                <span class="local-variable">this</span>.url = <span class="keyword">new</span> <span class="predefined-type">URL</span>(url);
+            } <span class="keyword">else</span> {
+                <span class="local-variable">this</span>.url = defaultAvatar.toURI().toURL();
+            }
+            <span class="local-variable">this</span>.image = <span class="predefined-type">ImageIO</span>.read(<span class="local-variable">this</span>.url);
+                        <span class="comment">// Code Continued in Snippet 2B</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Code Snippet 2A (<code>Avatar(String url)</code>):</strong> If a URL or local directory path string is provided,
+then the parameterized constructor will check if the provided string is valid or not. If the string
+is valid (i.e. non-empty and existing), then it will parse the URL and read the image given.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">            <span class="keyword">if</span> (!isSavedInData(url)) {
+                <span class="predefined-type">String</span> outputName = <span class="string"><span class="delimiter">&quot;</span><span class="content">/data/</span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.url.hashCode() + <span class="string"><span class="delimiter">&quot;</span><span class="content">.png</span><span class="delimiter">&quot;</span></span>;
+                <span class="predefined-type">File</span> outputImage = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="predefined-type">System</span>.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">user.dir</span><span class="delimiter">&quot;</span></span>) + outputName);
+
+                <span class="predefined-type">File</span> parentDirectory = outputImage.getParentFile();
+                <span class="keyword">if</span> (!parentDirectory.exists()) {
+                    parentDirectory.mkdirs();
+                }
+
+                <span class="predefined-type">ImageIO</span>.write(<span class="local-variable">this</span>.image, <span class="string"><span class="delimiter">&quot;</span><span class="content">png</span><span class="delimiter">&quot;</span></span>, outputImage);
+                <span class="local-variable">this</span>.url = outputImage.toURI().toURL();
+            }
+            <span class="local-variable">this</span>.value = <span class="local-variable">this</span>.url.toString();
+        }
+    } <span class="keyword">catch</span> (<span class="exception">Exception</span> e) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalValueException(MESSAGE_AVATAR_CONSTRAINTS);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Code Snippet 2B (<code>Avatar(String url)</code>):</strong> If the image given has not yet been stored in the data
+directory, it will generate a new file and save it.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="dependant-class-code-avatarutil-code"><a class="link" href="#dependant-class-code-avatarutil-code">Dependant Class: <code>AvatarUtil</code></a></h4>
+<div class="paragraph">
+<p>AvatarUtil generates a default placeholder image if the contact is not given a display picture. It relies
+on the <code>java.awt</code> library to generate a picture drawn by the methods found in <code>Graphics2D</code> and <code>Color</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can find the full implementation of <code>AvatarUtil</code> in the folder <code>java/seedu/address/commons/util</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="dependant-class-code-avatarwindow-code"><a class="link" href="#dependant-class-code-avatarwindow-code">Dependant Class: <code>AvatarWindow</code></a></h4>
+<div class="paragraph">
+<p>AvatarWindow is a UI component and is triggered when the current avatar of a contact is clicked on. A window
+will appear for the user to load and save a picture from the computer. If a valid picture is loaded and saved,
+it will create an Edit command and raise a new event; this event is the same as typing an actual valid edit command,
+and can also be undone or redone as per normal.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can find the full implementation of <code>AvatarWindow</code> in the folder <code>java/seedu/address/ui</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Additional ways of changing <code>Avatar</code>.<br>
+<strong>Alternative 1:</strong> Only allow user to use the Add and Edit commands to change the Avatar of the contact.<br>
+<strong>Pros:</strong> No time is spent to make new ways of changing Avatar.<br>
+<strong>Cons:</strong> May be stifling for users who want to have a GUI option.<br>
+<strong>Alternative 2 (current choice):</strong> Create a GUI alternative for users to change the Avatar of the contact.<br>
+<strong>Pros:</strong> Makes the application more user friendly; easier for users to point and click instead of copying the
+picture&#8217;s directory path, which may take a longer time.<br>
+<strong>Cons:</strong> Some classes (e.g. <em>PersonCard</em>, <em>PersonPanel</em>, etc.) have to be modified in order to implement this option.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Saving of pictures.<br>
+<strong>Alternative 1:</strong> Save the pictures within the <code>.jar</code> file.<br>
+<strong>Pros:</strong> Users will not be able to modify the pictures downloaded; lesser chances of error exceptions occuring due
+to missing files.<br>
+<strong>Cons:</strong> May be inconvenient for a user who would want to manipulate these pictures directly for any purpose.<br>
+<strong>Alternative 2 (current choice):</strong> Save the pictures outside of the <code>.jar</code> file, inside the <code>data/</code> folder.<br>
+<strong>Pros:</strong> Users will be able to directly access downloaded pictures and manipulate them as they please.<br>
+<strong>Cons:</strong> If users are not careful (e.g. permanently.delete a picture by mistake), the contact&#8217;s avatar may get
+replaced by the default placeholder.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-proposed-add-command-code-remark-code"><a class="link" href="#enhancement-proposed-add-command-code-remark-code">Enhancement Proposed: Add command <code>remark</code></a></h3>
+<div class="paragraph">
+<p>{Explain similar to the Undo/Redo feature above.}</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-contributions"><a class="link" href="#other-contributions">Other Contributions</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Small Feature - Theme Switcher (and GUI Design Improvements)</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Redesigned the AddressBook and provided a theme switcher for users to set their viewing preferences.</p>
+</li>
+<li>
+<p>User Guide: <a href="https://cs2103aug2017-w11-b3.github.io/main/UserGuide.html#theme-switcher">Theme Switcher</a></p>
+</li>
+<li>
+<p>Pull Request: <a href="https://github.com/CS2103AUG2017-W11-B3/main/pull/50">#50</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Modified <code>add</code> and <code>edit</code> command to support <code>Avatars</code></strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pull Request: <a href="https://github.com/CS2103AUG2017-W11-B3/main/pull/27">#27</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Role - Documentation IC</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Proofread Read Me, User Guide, and Developer Guide for the team.</p>
+</li>
+<li>
+<p>Responsible for creating most screenshot images found in the documentation
+(Pull Requests: <a href="https://github.com/CS2103AUG2017-W11-B3/main/pull/31/files">#31</a>,
+<a href="https://github.com/CS2103AUG2017-W11-B3/main/pull/66/files">#66</a>).</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-11-05 17:00:24 +00:00
+</div>
+</div>
+</body>
+</html>
