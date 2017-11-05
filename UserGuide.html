@@ -5,14 +5,14 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.3">
-<title>K.N.S. AddressBook - User Guide</title>
+<title>K.N.S. AddressBook v1.5.0 - User Guide</title>
 <link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>K.N.S. AddressBook - User Guide</h1>
+<h1>K.N.S. AddressBook v1.5.0 - User Guide</h1>
 </div>
 <div id="content">
 <div id="preamble">
@@ -26,15 +26,16 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>K.N.S. AddressBook v1.4.0 is a free Java desktop application available on Windows and Mac OS X operating systems. It is
-designed for freelancers who are bound to their desks, making many calls to clients with the office&#8217;s telephone, while on the same time opening their PC/laptop to find their clients' contact number.</p>
+<p>K.N.S. AddressBook is a free Java desktop application available on <a href="mainstream-os">mainstream operating systems</a>. It
+is designed for freelancers who are bound to their desks, making many calls to clients with the office&#8217;s telephone,
+simultaneously using their computer to find their clients' contact number.</p>
 </div>
 <div class="paragraph">
-<p>Most of the interactions with the application are done through an in-built Command Line Interface (CLI), which allows
-you do add, edit and remove contacts quickly with only the use of a keyboard.</p>
+<p>Most of the interactions in K.N.S. AddressBook are done through an in-built <a href="#command-line-interface">Command Line
+Interface</a> (CLI), which allows you do add, edit and remove contacts quickly with only the use of a keyboard.</p>
 </div>
 <div class="paragraph">
-<p>This user guide will help you get started on using our application, and show you how you can make use of it.</p>
+<p>This user guide will help you get started on using K.N.S. AddressBook, and show you how you can make use of it.</p>
 </div>
 </div>
 </div>
@@ -49,7 +50,7 @@ you do add, edit and remove contacts quickly with only the use of a keyboard.</p
 <li><a href="#key-features">3. Key Features</a>
 <ul class="sectlevel2">
 <li><a href="#person-panel">3.1. Person Panel</a></li>
-<li><a href="#colour-theme-switcher-code-in-development-for-v1-5-code">3.2. Colour Theme Switcher <code>In Development For v1.5</code></a></li>
+<li><a href="#theme-switcher">3.2. Theme Switcher</a></li>
 <li><a href="#find-by-all-field">3.3. Find by All Field</a></li>
 <li><a href="#saving-the-data">3.4. Saving the data</a></li>
 </ul>
@@ -91,40 +92,73 @@ you do add, edit and remove contacts quickly with only the use of a keyboard.</p
 <div class="sect1">
 <h2 id="key-features"><a class="link" href="#key-features">3. Key Features</a></h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>K.N.S. AddressBook has many useful features for you to use. Listed below are some key features found in K.N.S.
+AddressBook that can help you out.</p>
+</div>
 <div class="sect2">
 <h3 id="person-panel"><a class="link" href="#person-panel">3.1. Person Panel</a></h3>
 <div class="paragraph">
-<p>This is where you will find a selected contact&#8217;s information (<em>name, address, phone number, etc.</em>) displayed neatly on a single page. When you click on the currently displayed Avatar of the contact, a new window will pop-up and you will have the option of selecting an image stored on the computer to replace it.</p>
+<p>This is where you will find a selected contact&#8217;s information (<em>name, address, phone number, etc.</em>) displayed neatly on
+a single page. When you click on the currently displayed <a href="avatar">Avatar</a> of the contact, a new window will pop-up like so:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UiPersonPanel.png" alt="UiPersonPanel" width="497">
+</div>
 </div>
 <div class="paragraph">
-<p>Planned features for future versions include:</p>
+<p>When you click <code>load</code>, you will be given the option to select an image (<em>either in .JPG or .PNG format</em>) stored on
+your computer. Afterwards, clicking <code>save</code> will let you replace the current Avatar of the contact.</p>
+</div>
+<div class="paragraph">
+<p>In K.N.S. AddressBook v2.0, you can look forward to the following enhancements to Person Panel:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>For v2.0</code> Notes and Reminders</p>
+<p><strong>Notes</strong>: You can record down miscellaneous information (<em>e.g. favourite food, pet peeves</em>) about a
+contact.</p>
 </li>
 <li>
-<p><code>For v2.0</code> Birthday Countdown</p>
+<p><strong>Birthday Countdown &amp; Reminder</strong>: You&#8217;ll always know whose birthday is coming up soon! You can also get a reminder in
+advance of a contact&#8217;s upcoming birthday; no more remembering and forgetting needed!</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="colour-theme-switcher-code-in-development-for-v1-5-code"><a class="link" href="#colour-theme-switcher-code-in-development-for-v1-5-code">3.2. Colour Theme Switcher <code>In Development For v1.5</code></a></h3>
+<h3 id="theme-switcher"><a class="link" href="#theme-switcher">3.2. Theme Switcher</a></h3>
 <div class="paragraph">
-<p>As of now, the dark theme is the default colour theme for the application. Planned features include:</p>
+<p>When you click on 'Theme' in the Menu Bar, you should see 5 preset themes that you can choose for K.N.S. AddressBook:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UiThemeOptions.png" alt="UiThemeOptions" width="359">
+</div>
+</div>
+<div class="paragraph">
+<p>When running K.N.S. AddressBook for the first time, the <code>Light</code> theme is the default appearance setting. Clicking on any
+of the other 4 preset themes will result in an immediate appearance change; hopefully one of these preset themes is to
+your liking! Here is what K.N.S. AddressBook look&#8217;s like in all 5 preset themes:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UiAllThemes.gif" alt="UiAllThemes" width="668">
+</div>
+</div>
+<div class="paragraph">
+<p>In K.N.S. AddressBook v2.0, you can look forward to the following enhancements to Theme Switcher:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>For v1.4</code> Command to change the theme, e.g. <code>theme light</code></p>
+<p><strong>More Preset Themes</strong>: 5 preset themes is definitely not enough. We want you to have more appearance options so that
+K.N.S. AddressBook suits your style.</p>
 </li>
 <li>
-<p><code>For v1.4</code> 5 Preset Themes: Light, Dark (current default theme), Red, Blue and Green.</p>
-</li>
-<li>
-<p><code>For v1.5</code> Detailed instructions for advanced users to make their own themes.</p>
+<p><strong>Custom Themes</strong>: For the more tech-savvy users, we plan to let you change the colours of K.N.S. AddressBook via
+import of <a href="cascading-style-sheets">Cascading Style Sheets</a> (CSS).</p>
 </li>
 </ul>
 </div>
@@ -180,14 +214,14 @@ This application will not work with earlier versions of Java 8 (<em>anything bef
 such:</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/FirstTimeLaunch.png" alt="FirstTimeLaunch" width="790">
+<img src="images/FirstTimeLaunch.png" alt="FirstTimeLaunch" width="600">
 </div>
 </div>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>And that&#8217;s all, you&#8217;re good to go!</p>
+<p>And that&#8217;s all, you&#8217;re now ready to use K.N.S. AddressBook!</p>
 </div>
 </div>
 <div class="sect2">
@@ -195,20 +229,21 @@ such:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>There are 6 example contacts that are already pre-loaded in the Address Book. Clicking on any individual contact card
-will select it, showing you the contact&#8217;s details in the PersonPanel like so:</p>
+<p>There are 20 example contacts that are already pre-loaded for you to get familiarised with the features and commands
+found in K.N.S. AddressBook. Clicking on any individual contact card will <code>select</code> it, showing you the contact&#8217;s details
+in the PersonPanel like so:</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/FirstTimeSelection.png" alt="FirstTimeSelection" width="790">
+<img src="images/FirstTimeSelection.png" alt="FirstTimeSelection" width="668">
 </div>
 </div>
 </li>
 <li>
-<p>Let&#8217;s start off by getting rid of all these example contacts. Type the command <strong><code>clear</code></strong> in the command box at the
+<p>Let&#8217;s start off by clearing all these example contacts. Type the command <strong><code>clear</code></strong> in the command box at the
 top, and press <kbd>Enter</kbd>. You should now see an empty Address Book as such:</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/FirstTimeClear.png" alt="FirstTimeClear" width="790">
+<img src="images/FirstTimeClear.png" alt="FirstTimeClear" width="668">
 </div>
 </div>
 </li>
@@ -218,7 +253,7 @@ top, and press <kbd>Enter</kbd>. You should now see an empty Address Book as suc
 should see the following:</p>
 <div class="imageblock">
 <div class="content">
-<img src="images/FirstTimeAdd.png" alt="FirstTimeAdd" width="790">
+<img src="images/FirstTimeAdd.png" alt="FirstTimeAdd" width="668">
 </div>
 </div>
 </li>
@@ -1044,19 +1079,49 @@ need to do!</p>
 <div class="sect1">
 <h2 id="glossary"><a class="link" href="#glossary">8. Glossary</a></h2>
 <div class="sectionbody">
-<div class="ulist">
+<div id="avatar" class="ulist">
 <ul>
 <li>
-<p><strong>Avatar</strong>: It is a custom display picture that users can set for their contacts.</p>
+<p><strong>Avatar</strong>: A picture representing a particular person in the address book.</p>
 </li>
+</ul>
+</div>
+<div id="cascading-style-sheets" class="ulist">
+<ul>
+<li>
+<p><strong>Cascading Style Sheets (CSS)</strong>: It is a style sheet language used for describing the presentation of a document
+written in a markup language.</p>
+</li>
+</ul>
+</div>
+<div id="command-line-interface" class="ulist">
+<ul>
 <li>
 <p><strong>Command Line Interface (CLI)</strong>: It is an interface which users respond to a visual prompt by typing in a command
 on a specified line, receive a response back from the system, and then enter another command. This goes on back and
 forth.</p>
 </li>
+</ul>
+</div>
+<div id="graphical-user-interface" class="ulist">
+<ul>
+<li>
+<p><strong>Graphical User Interface (GUI)</strong>: It is a graphical (<em>rather than purely textual</em>) user interface to a computer.</p>
+</li>
+</ul>
+</div>
+<div id="java" class="ulist">
+<ul>
 <li>
 <p><strong>Java</strong>: It is a general-purpose computer programming language that is used in many products today. To learn more,
 click <a href="https://go.java/index.html?intcmp=gojava-banner-java-com">here</a>.</p>
+</li>
+</ul>
+</div>
+<div id="mainstream-os" class="ulist">
+<ul>
+<li>
+<p><strong>Mainstream OS</strong>: Examples include Windows, Linux, Unix, Mac OS X.</p>
 </li>
 </ul>
 </div>
@@ -1065,7 +1130,7 @@ click <a href="https://go.java/index.html?intcmp=gojava-banner-java-com">here</a
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-05 13:07:48 +00:00
+Last updated 2017-11-05 14:42:36 +00:00
 </div>
 </div>
 </body>
