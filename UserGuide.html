@@ -73,7 +73,7 @@ Interface</a> (CLI), which allows you do add, edit and remove contacts quickly w
 <li><a href="#deleting-a-person-code-delete-code-or-code-d-code">5.8. Deleting a person : <code>delete</code> or <code>d</code></a></li>
 <li><a href="#selecting-a-person-code-select-code-or-code-s-code">5.9. Selecting a person : <code>select</code> or <code>s</code></a></li>
 <li><a href="#sorting-your-contact-list-code-sort-code">5.10. Sorting your contact list : <code>sort</code></a></li>
-<li><a href="#set-favourite-contacts-code-in-development-for-v1-5-code">5.11. Set favourite contacts <code>In development for v1.5</code></a></li>
+<li><a href="#set-favourite-contacts-code-in-development-for-v2-0-code">5.11. Set favourite contacts <code>In development for v2.0</code></a></li>
 <li><a href="#contacting-a-person-code-in-development-for-v2-0-code">5.12. Contacting a person <code>In development for v2.0</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code-or-code-h-code">5.13. Listing entered commands : <code>history</code> or <code>h</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code-or-code-u-code">5.14. Undoing previous command : <code>undo</code> or <code>u</code></a></li>
@@ -424,21 +424,24 @@ Edits the name of the 2nd person to be <code>Betsy Crower</code>, change the ava
 <h3 id="adding-a-tag-code-addtag-code-or-code-at-code"><a class="link" href="#adding-a-tag-code-addtag-code-or-code-at-code">5.5. Adding a tag : <code>addtag</code> or <code>at</code></a></h3>
 <div class="paragraph">
 <p><code>Since v1.2</code>
-Adds a tag to an existing person in the address book.<br>
-Format: <code>addtag INDEX TAG</code></p>
+Adds tag(s) to an existing person in the address book.<br>
+Format: <code>addtag INDEX TAG&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Adds the given tag to the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>Adds the given tag(s) to the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
 <p>When adding the tag, the existing tags of the person will NOT be removed i.e. adding the tag is cumulative.</p>
 </li>
 <li>
 <p>The new tag added must be different from existing tags i.e. no duplicate tags will be allowed</p>
+</li>
+<li>
+<p>You are able to add more than 1 tag in a single <code>addtag</code> command.</p>
 </li>
 </ul>
 </div>
@@ -454,13 +457,10 @@ Format: <code>addtag INDEX TAG</code></p>
 Adds a <code>owesMoney</code> tag for the 1st person on the list. If previously the 1st person has <code>friends</code> tag, now the 1st person has both <code>friends</code> and <code>owesMoney</code> tag.</p>
 </li>
 <li>
-<p><code>addtag 3 friends</code><br>
-Adds a <code>friends</code> tag for the 3rd person on the list.</p>
+<p><code>addtag 3 friends highSchool</code><br>
+Adds a <code>friends</code> tag and a <code>highSchool</code> tag for the 3rd person on the list.</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><code>In development for v1.5</code> Adding more than 1 tag with a single addtag command</p>
 </div>
 </div>
 <div class="sect2">
@@ -468,20 +468,23 @@ Adds a <code>friends</code> tag for the 3rd person on the list.</p>
 <div class="paragraph">
 <p><code>Since v1.3</code>
 Deletes given tag from an existing person in the address book.<br>
-Format: <code>deletetag INDEX TAG</code></p>
+Format: <code>deletetag INDEX TAG&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Deletes given tag from the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
+<p>Deletes given tag(s) from the person at the specified <code>INDEX</code>. The index refers to the index number shown in the last person listing. The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
 </li>
 <li>
 <p>When deleting the tag, only specified tag will be removed.</p>
 </li>
 <li>
 <p>The tag that will be deleted must exist in the person&#8217;s tag list.</p>
+</li>
+<li>
+<p>You are able to delete more than 1 tag in a single <code>deletetag</code> command.</p>
 </li>
 </ul>
 </div>
@@ -497,13 +500,10 @@ Format: <code>deletetag INDEX TAG</code></p>
 Deletes the <code>owesMoney</code> tag from the 1st person on the list.</p>
 </li>
 <li>
-<p><code>deletetag 3 friends</code><br>
-Deletes the <code>friends</code> tag from the 3rd person on the list.</p>
+<p><code>deletetag 3 friends highSchool</code><br>
+Deletes the <code>friends</code> tag and <code>highSchool</code> tag from the 3rd person on the list.</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><code>In development for v1.5</code> Deleting more than 1 tag with a single deletetag command</p>
 </div>
 </div>
 <div class="sect2">
@@ -808,7 +808,7 @@ Sorts the resulting list from the <code>find</code> command by name, in ascendin
 </div>
 </div>
 <div class="sect2">
-<h3 id="set-favourite-contacts-code-in-development-for-v1-5-code"><a class="link" href="#set-favourite-contacts-code-in-development-for-v1-5-code">5.11. Set favourite contacts <code>In development for v1.5</code></a></h3>
+<h3 id="set-favourite-contacts-code-in-development-for-v2-0-code"><a class="link" href="#set-favourite-contacts-code-in-development-for-v2-0-code">5.11. Set favourite contacts <code>In development for v2.0</code></a></h3>
 <div class="paragraph">
 <p>Favourite contacts will appear on the top of the contact list.</p>
 </div>
@@ -982,14 +982,14 @@ Format: <code>exit</code></p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Add Tag</strong></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>addtag | at</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>at INDEX TAG</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addtag 2 friends</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>at INDEX TAG&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addtag 2 friends highSchool</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Delete Tag</strong></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><code>deletag | dt</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dt INDEX TAG</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deletetag 2 friends</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dt INDEX TAG&#8230;&#8203;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deletetag 2 friends highSchool</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Find</strong></p></td>
@@ -1130,7 +1130,7 @@ click <a href="https://go.java/index.html?intcmp=gojava-banner-java-com">here</a
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-06 18:45:21 +00:00
+Last updated 2017-11-07 17:12:13 +00:00
 </div>
 </div>
 </body>

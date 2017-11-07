@@ -1336,10 +1336,10 @@ address of their contact.</p>
 <h3 id="add-tag-and-delete-tag"><a class="link" href="#add-tag-and-delete-tag">4.6. Add Tag and Delete Tag</a></h3>
 <div class="paragraph">
 <p>Add tag and delete tag mechanism is facilitated by the <code>addtag</code> command and <code>deletetag</code> command, or their equivalent
-aliases <code>at</code> and <code>dt</code>, which is useful for adding and deleting a tag in a person&#8217;s tag list. On previous versions
+aliases <code>at</code> and <code>dt</code>, which is useful for adding and deleting tags in a person&#8217;s tag list. On previous versions
 before Add and Delete tag feature was introduced, users are able to change a person&#8217;s tag list by using <code>edit</code> command.
-Using <code>edit</code> command to add and delete a tag is quite cumbersome as users need to retype all the current tags that they
-didn&#8217;t want to edit. <code>addtag</code> command and <code>deletetag</code> command enables user to add and delete a tag using only a single
+Using <code>edit</code> command to add and delete tags is quite cumbersome as users need to retype all the current tags that they
+didn&#8217;t want to edit. <code>addtag</code> command and <code>deletetag</code> command enables user to add and delete tags using only a single
 command, without retyping all the current tags.</p>
 </div>
 <div class="sect3">
@@ -1415,11 +1415,10 @@ like <code>addtag</code> command, shown by the following code snippet:</p>
 <strong>Alternative 1 (current choice):</strong> Implementing a new command <code>addtag</code> and <code>deletetag</code> instead of using the existing
 Edit command. <br>
 <strong>Pros:</strong> Users can add and delete a single tag only by typing the new tag that they want to assign or remove from
-a contact. <br>
-<strong>Cons:</strong> Currently <code>addtag</code> and <code>deletetag</code> could only add and delete a single tag every time it is executed (<em>future
-enhancement will enable <code>addtag</code> and <code>deletetag</code> to add and delete more than 1 tag when executed</em>).<br>
-<strong>Alternative 2:</strong> Use existing Edit command to add or delete a single tag from a person in the address book.<br>
-<strong>Pros:</strong> Less command to remember.<br>
+a contact. <code>addtag</code> and <code>deletetag</code> supports adding and deleting several tags at a single execution.<br>
+<strong>Cons:</strong> More commands to remember.<br>
+<strong>Alternative 2:</strong> Use existing Edit command to add or delete tags from a person in the address book.<br>
+<strong>Pros:</strong> Less commands to remember.<br>
 <strong>Cons:</strong> Users need to retype all existing tags they want to keep when they are using <code>edit</code> command. Users might
 mistype existing tags or not typing a complete set of existing tags while using <code>edit</code> command.</p>
 </div>
@@ -2325,7 +2324,7 @@ and modified.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-06 18:45:21 +00:00
+Last updated 2017-11-07 17:12:13 +00:00
 </div>
 </div>
 </body>
