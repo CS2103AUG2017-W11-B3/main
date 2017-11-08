@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.3">
+<title>Kevin Leonardo - Project Portfolio</title>
+<link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Kevin Leonardo - Project Portfolio</h1>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="project-k-n-s-addressbook"><a class="link" href="#project-k-n-s-addressbook">Project: K.N.S. AddressBook</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>K.N.S. AddressBook is a Java desktop address book application created by <strong>Team W11-B3</strong> during the course of <strong>CS2103T
+Software Engineering</strong> in AY2017/8 Semester 1.</p>
+</div>
+<div class="paragraph">
+<p><strong>Code Contributed</strong>:
+ [<a href="https://github.com/CS2103AUG2017-W11-B3/main/blob/master/collated/main/k-l-a.md">Functional Code</a>]
+ [<a href="https://github.com/CS2103AUG2017-W11-B3/main/blob/master/collated/test/k-l-a.md">Test Code</a>]</p>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-partial-finding"><a class="link" href="#enhancement-added-partial-finding">Enhancement Added: Partial Finding</a></h3>
+<div class="sect3">
+<h4 id="external-behavior"><a class="link" href="#external-behavior">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: User Guide]</mark></p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="partial-matching"><a class="link" href="#partial-matching">Partial matching</a></h4>
+<div class="paragraph">
+<p><code>Since v1.2</code><br>
+The Find command accepts partial matches by default.<br>
+Keywords <strong>will match</strong> entries if they are contained within those entries.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+However, vice-versa does not apply!
+i.e. Entries <strong>will not match</strong> keywords if the entries are contained within the keywords.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find mel</code><br>
+Matches <code>Melissa</code> and <code>Amelia</code></p>
+</li>
+<li>
+<p><code>find amelia</code><br>
+Matches <code>Amelia</code> but not <code>Melissa</code> or <code>Mel</code></p>
+</li>
+<li>
+<p><code>find leon</code><br>
+Matches <code>Leonard</code> but not <code>Leo</code></p>
+</li>
+<li>
+<p><code>find t/ frien</code><br>
+Matches any person with a tag that contains <code>frien</code>, e.g. <code>Friends</code> or <code>BestFriends</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+<div class="sect3">
+<h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="implementation"><a class="link" href="#implementation">Implementation</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: Developer Guide]</mark></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="partial-find"><a class="link" href="#partial-find">Partial Find</a></h3>
+<div class="paragraph">
+<p>The partial matching of the Find command is implemented by creating a method in the <code>StringUtil</code> class with the help of
+the <code>regionMatches</code> method from the java <code>String</code> class.
+It replaces the method for matching in all predicate classes that is used by the command.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The Find command now only use partial matching and has lost the full matching functionality
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Previously, the method used for matching was implemented as such :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> <span class="directive">static</span> <span class="type">boolean</span> containsWordIgnoreCase(<span class="predefined-type">String</span> sentence, <span class="predefined-type">String</span> word) {
+        <span class="comment">// ...check and prepare arguments..</span>
+        <span class="keyword">for</span> (<span class="predefined-type">String</span> wordInSentence: wordsInPreppedSentence) {
+            <span class="keyword">if</span> (wordInSentence.equalsIgnoreCase(preppedWord)) {
+                <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+            }
+        }
+        <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By using the <code>equalsIgnoreCase</code> method, the query word has to exactly match, ignoring case, the sentence word for the
+method to return <code>true</code>.<br></p>
+</div>
+<div class="paragraph">
+<p>Now, we introduce a slightly modified version to allow for partial matching as such :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"> <span class="directive">public</span> <span class="directive">static</span> <span class="type">boolean</span> containsWordPartialIgnoreCase(<span class="predefined-type">String</span> sentence, <span class="predefined-type">String</span> word) {
+        <span class="comment">//..check and prepare arguments..</span>
+        <span class="keyword">for</span> (<span class="predefined-type">String</span> wordInSentence: wordsInPreppedSentence) {
+            <span class="keyword">if</span> (wordInSentence.toLowerCase().contains(preppedWord.toLowerCase())) {
+                <span class="keyword">return</span> <span class="predefined-constant">true</span>;
+            }
+        }
+        <span class="keyword">return</span> <span class="predefined-constant">false</span>;
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By using the <code>contains</code> method, we now allow the query word to be a substring of the sentence word.</p>
+</div>
+<div class="paragraph">
+<p>We then replace the use of the previous method in the Predicate classes in model
+(<em>e.g.`NameContainsKeywordsPredicate`</em>) with the new method so that the Find command actually uses partial matching.</p>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Exclusive use of partial matching.<br>
+<strong>Alternative 1 (current choice):</strong> Find command exclusively uses partial matching.<br>
+<strong>Pros:</strong> Simple implementation, doesn&#8217;t affect complexity from user&#8217;s perspective and easier for users to utilize Find
+command.<br>
+<strong>Cons:</strong> Users lose the ability to do full matching when it would be useful
+(<em>e.g. a lot of people with similiar names</em>).<br>
+<strong>Alternative 2:</strong> Give the option to toggle/use either partial matching or full matching<br>
+<strong>Pros:</strong> More flexible and powerful.<br>
+<strong>Cons:</strong> Requires more complicated syntax which can be confusing to new users, most use cases are already covered by
+partial matching.</p>
+</div>
+<hr>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Type of partial matching<br>
+<strong>Alternative 1 (current choice):</strong> Matches can be from anywhere in the word<br>
+<strong>Pros:</strong> More intuitive way of searching, simpler to understand.<br>
+<strong>Cons:</strong> Search results become less relevant for short keywords. (<em>Mitigated by sorting the results based on match position</em>)<br>
+<strong>Alternative 2:</strong> Matches are required to be from the start of each word.<br>
+<strong>Pros:</strong> Restricts the scope of search which increases relevancy but still giving enough flexibility for users.<br>
+<strong>Cons:</strong> Can be unintuitive, less powerful.<br></p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-added-find-by-tag"><a class="link" href="#enhancement-added-find-by-tag">Enhancement Added: Find by Tag</a></h3>
+<div class="sect3">
+<h4 id="external-behavior-2"><a class="link" href="#external-behavior-2">External behavior</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="justification-2"><a class="link" href="#justification-2">Justification</a></h4>
+
+</div>
+<div class="sect3">
+<h4 id="implementation-2"><a class="link" href="#implementation-2">Implementation</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: Developer Guide]</mark></p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-proposed-boolean-searching"><a class="link" href="#enhancement-proposed-boolean-searching">Enhancement Proposed: Boolean Searching</a></h3>
+<div class="sect3">
+<h4 id="justification-3"><a class="link" href="#justification-3">Justification</a></h4>
+<div class="paragraph">
+<p>Given the target audience of our product, it is plausible that they would need to find people who matches certain
+criteria without having a specific person in mind. For example, they might need to find everyone who are clients but not
+currently overseas. In current form, there is no way for them to do this easily.<br>
+Boolean searching will allow them to search using AND and NOT keywords to enable a much easier searching experience.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="other-contributions"><a class="link" href="#other-contributions">Other Contributions</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Modified <code>add</code> to accept missing prefixes other than name</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Each missing prefix will be shown with a default value to indicate their absence</p>
+</li>
+<li>
+<p>Pull Request :</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Set up various project tools, such as :</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Appveyor and Coveralls configuration for github repo.</p>
+</li>
+<li>
+<p>Github-pages website :</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-11-08 00:41:50 +00:00
+</div>
+</div>
+</body>
+</html>
