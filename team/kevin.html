@@ -35,8 +35,49 @@ Software Engineering</strong> in AY2017/8 Semester 1.</p>
 <div class="paragraph">
 <p><mark>Start of Extract [from: User Guide]</mark></p>
 </div>
+</div>
+<div class="sect3">
+<h4 id="partial-matching"><a class="link" href="#partial-matching">Partial matching</a></h4>
 <div class="paragraph">
-<p>Unresolved directive in kevin.adoc - include::../UserGuide.html[tag=partialfind]</p>
+<p><code>Since v1.2</code><br>
+The Find command accepts partial matches by default.<br>
+Keywords <strong>will match</strong> entries if they are contained within those entries.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+However, vice-versa does not apply!
+i.e. Entries <strong>will not match</strong> keywords if the entries are contained within the keywords.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find mel</code><br>
+Matches <code>Melissa</code> and <code>Amelia</code></p>
+</li>
+<li>
+<p><code>find amelia</code><br>
+Matches <code>Amelia</code> but not <code>Melissa</code> or <code>Mel</code></p>
+</li>
+<li>
+<p><code>find leon</code><br>
+Matches <code>Leonard</code> but not <code>Leo</code></p>
+</li>
+<li>
+<p><code>find t/ frien</code><br>
+Matches any person with a tag that contains <code>frien</code>, e.g. <code>Friends</code> or <code>BestFriends</code></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p><mark>End of Extract</mark></p>
@@ -225,7 +266,7 @@ Boolean searching will allow them to search using AND and NOT keywords to enable
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-08 00:56:06 +00:00
+Last updated 2017-11-08 00:57:00 +00:00
 </div>
 </div>
 </body>
