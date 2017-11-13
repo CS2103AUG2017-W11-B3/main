@@ -21,70 +21,6 @@
 <p>By: <code>Team W11-B3</code>      Since: <code>Sep 2017</code>      Licence: <code>MIT</code></p>
 </div>
 </div>
-<div id="toc" class="toc">
-<div id="toctitle"></div>
-<ul class="sectlevel1">
-<li><a href="#introduction">1. Introduction</a></li>
-<li><a href="#setting-up">2. Setting Up</a>
-<ul class="sectlevel2">
-<li><a href="#prerequisites">2.1. Prerequisites</a></li>
-<li><a href="#setting-up-the-project-in-your-computer">2.2. Setting up the project in your computer</a></li>
-<li><a href="#verifying-the-setup">2.3. Verifying the setup</a></li>
-<li><a href="#configurations-to-do-before-writing-code">2.4. Configurations to do before writing code</a></li>
-</ul>
-</li>
-<li><a href="#design">3. Design</a>
-<ul class="sectlevel2">
-<li><a href="#introduction-architecture">3.1. Introduction: Architecture</a></li>
-<li><a href="#events-driven-nature-of-the-design">3.2. Events-Driven nature of the design</a></li>
-<li><a href="#ui-component">3.3. UI Component</a></li>
-<li><a href="#logic-component">3.4. Logic component</a></li>
-<li><a href="#model-component">3.5. Model Component</a></li>
-<li><a href="#storage-component">3.6. Storage Component</a></li>
-<li><a href="#common-classes">3.7. Common Classes</a></li>
-</ul>
-</li>
-<li><a href="#implementation">4. Implementation</a>
-<ul class="sectlevel2">
-<li><a href="#undo-redo-mechanism">4.1. Undo/Redo Mechanism</a></li>
-<li><a href="#person-panel">4.2. Person Panel</a></li>
-<li><a href="#avatar">4.3. Avatar</a></li>
-<li><a href="#birthday">4.4. Birthday</a></li>
-<li><a href="#partial-find">4.5. Partial Find</a></li>
-<li><a href="#find-by-all-field">4.6. Find by All Field</a></li>
-<li><a href="#add-tag-and-delete-tag">4.7. Add Tag and Delete Tag</a></li>
-<li><a href="#logging">4.8. Logging</a></li>
-<li><a href="#configuration">4.9. Configuration</a></li>
-</ul>
-</li>
-<li><a href="#documentation">5. Documentation</a>
-<ul class="sectlevel2">
-<li><a href="#editing-documentation">5.1. Editing Documentation</a></li>
-<li><a href="#publishing-documentation">5.2. Publishing Documentation</a></li>
-<li><a href="#converting-documentation-to-pdf-format">5.3. Converting Documentation to PDF format</a></li>
-</ul>
-</li>
-<li><a href="#testing">6. Testing</a>
-<ul class="sectlevel2">
-<li><a href="#running-tests">6.1. Running Tests</a></li>
-<li><a href="#types-of-tests">6.2. Types of tests</a></li>
-<li><a href="#troubleshooting-testing">6.3. Troubleshooting Testing</a></li>
-</ul>
-</li>
-<li><a href="#dev-ops">7. Dev Ops</a>
-<ul class="sectlevel2">
-<li><a href="#build-automation">7.1. Build Automation</a></li>
-<li><a href="#continuous-integration">7.2. Continuous Integration</a></li>
-<li><a href="#making-a-release">7.3. Making a Release</a></li>
-<li><a href="#managing-dependencies">7.4. Managing Dependencies</a></li>
-</ul>
-</li>
-<li><a href="#user-stories">Appendix A: User Stories</a></li>
-<li><a href="#use-cases">Appendix B: Use Cases</a></li>
-<li><a href="#non-functional-requirements">Appendix C: Non Functional Requirements</a></li>
-<li><a href="#glossary">Appendix D: Glossary</a></li>
-</ul>
-</div>
 </div>
 <div class="sect1">
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
@@ -98,10 +34,81 @@ you understand what features we have implemented, and how we have done so.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="setting-up"><a class="link" href="#setting-up">2. Setting Up</a></h2>
+<h2 id="table-of-contents"><a class="link" href="#table-of-contents">2. Table of Contents</a></h2>
+<div class="sectionbody">
+<div id="toc" class="toc">
+<div id="toctitle" class="title"></div>
+<ul class="sectlevel1">
+<li><a href="#introduction">1. Introduction</a></li>
+<li><a href="#table-of-contents">2. Table of Contents</a></li>
+<li><a href="#setting-up">3. Setting Up</a>
+<ul class="sectlevel2">
+<li><a href="#prerequisites">3.1. Prerequisites</a></li>
+<li><a href="#setting-up-the-project-in-your-computer">3.2. Setting up the project in your computer</a></li>
+<li><a href="#verifying-the-setup">3.3. Verifying the setup</a></li>
+<li><a href="#configurations-to-do-before-writing-code">3.4. Configurations to do before writing code</a></li>
+</ul>
+</li>
+<li><a href="#design">4. Design</a>
+<ul class="sectlevel2">
+<li><a href="#introduction-architecture">4.1. Introduction: Architecture</a></li>
+<li><a href="#events-driven-nature-of-the-design">4.2. Events-Driven nature of the design</a></li>
+<li><a href="#ui-component">4.3. UI Component</a></li>
+<li><a href="#logic-component">4.4. Logic component</a></li>
+<li><a href="#model-component">4.5. Model Component</a></li>
+<li><a href="#storage-component">4.6. Storage Component</a></li>
+<li><a href="#common-classes">4.7. Common Classes</a></li>
+</ul>
+</li>
+<li><a href="#implementation">5. Implementation</a>
+<ul class="sectlevel2">
+<li><a href="#undo-redo-mechanism">5.1. Undo/Redo Mechanism</a></li>
+<li><a href="#person-panel">5.2. Person Panel</a></li>
+<li><a href="#avatar">5.3. Avatar</a></li>
+<li><a href="#birthday">5.4. Birthday</a></li>
+<li><a href="#partial-find">5.5. Partial Find</a></li>
+<li><a href="#find-by-all-field">5.6. Find by All Field</a></li>
+<li><a href="#add-tag-and-delete-tag">5.7. Add Tag and Delete Tag</a></li>
+<li><a href="#theme-switcher">5.8. Theme Switcher</a></li>
+<li><a href="#logging">5.9. Logging</a></li>
+<li><a href="#configuration">5.10. Configuration</a></li>
+</ul>
+</li>
+<li><a href="#documentation">6. Documentation</a>
+<ul class="sectlevel2">
+<li><a href="#editing-documentation">6.1. Editing Documentation</a></li>
+<li><a href="#publishing-documentation">6.2. Publishing Documentation</a></li>
+<li><a href="#converting-documentation-to-pdf-format">6.3. Converting Documentation to PDF format</a></li>
+</ul>
+</li>
+<li><a href="#testing">7. Testing</a>
+<ul class="sectlevel2">
+<li><a href="#running-tests">7.1. Running Tests</a></li>
+<li><a href="#types-of-tests">7.2. Types of tests</a></li>
+<li><a href="#troubleshooting-testing">7.3. Troubleshooting Testing</a></li>
+</ul>
+</li>
+<li><a href="#dev-ops">8. Dev Ops</a>
+<ul class="sectlevel2">
+<li><a href="#build-automation">8.1. Build Automation</a></li>
+<li><a href="#continuous-integration">8.2. Continuous Integration</a></li>
+<li><a href="#making-a-release">8.3. Making a Release</a></li>
+<li><a href="#managing-dependencies">8.4. Managing Dependencies</a></li>
+</ul>
+</li>
+<li><a href="#user-stories">Appendix A: User Stories</a></li>
+<li><a href="#use-cases">Appendix B: Use Cases</a></li>
+<li><a href="#non-functional-requirements">Appendix C: Non Functional Requirements</a></li>
+<li><a href="#glossary">Appendix D: Glossary</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="setting-up"><a class="link" href="#setting-up">3. Setting Up</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="prerequisites"><a class="link" href="#prerequisites">2.1. Prerequisites</a></h3>
+<h3 id="prerequisites"><a class="link" href="#prerequisites">3.1. Prerequisites</a></h3>
 <div class="paragraph">
 <p>Before you get stared, do ensure that you have the following installed on your computer:</p>
 </div>
@@ -147,7 +154,7 @@ By default, IntelliJ has Gradle and JavaFx plugins installed; do not disable the
 </div>
 </div>
 <div class="sect2">
-<h3 id="setting-up-the-project-in-your-computer"><a class="link" href="#setting-up-the-project-in-your-computer">2.2. Setting up the project in your computer</a></h3>
+<h3 id="setting-up-the-project-in-your-computer"><a class="link" href="#setting-up-the-project-in-your-computer">3.2. Setting up the project in your computer</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -215,7 +222,7 @@ dialog first</em>)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">2.3. Verifying the setup</a></h3>
+<h3 id="verifying-the-setup"><a class="link" href="#verifying-the-setup">3.3. Verifying the setup</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -228,9 +235,9 @@ dialog first</em>)</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">2.4. Configurations to do before writing code</a></h3>
+<h3 id="configurations-to-do-before-writing-code"><a class="link" href="#configurations-to-do-before-writing-code">3.4. Configurations to do before writing code</a></h3>
 <div class="sect3">
-<h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">2.4.1. Configuring the coding style</a></h4>
+<h4 id="configuring-the-coding-style"><a class="link" href="#configuring-the-coding-style">3.4.1. Configuring the coding style</a></h4>
 <div class="paragraph">
 <p>This project follows <a href="https://github.com/oss-generic/process/blob/master/docs/CodingStandards.md">oss-generic coding
 standards</a>. IntelliJ&#8217;s default style is mostly compliant with ours but it uses a different import order from ours. To
@@ -267,7 +274,7 @@ style-compliance as you write code.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="setting-up-continuous-integration-ci"><a class="link" href="#setting-up-continuous-integration-ci">2.4.2. Setting up Continuous Integration (CI)</a></h4>
+<h4 id="setting-up-continuous-integration-ci"><a class="link" href="#setting-up-continuous-integration-ci">3.4.2. Setting up Continuous Integration (CI)</a></h4>
 <div class="paragraph">
 <p>Set up Travis to perform CI for your fork. See <a href="UsingTravis.html">UsingTravis.adoc</a> to learn how to set it up.</p>
 </div>
@@ -289,7 +296,7 @@ is Unix-based and AppVeyor is Windows-based</em>).
 </div>
 </div>
 <div class="sect3">
-<h4 id="before-coding"><a class="link" href="#before-coding">2.4.3. Before coding</a></h4>
+<h4 id="before-coding"><a class="link" href="#before-coding">3.4.3. Before coding</a></h4>
 <div class="paragraph">
 <p>Before you start coding, do read the <a href="#architecture">Architecture</a> section below so that you can get a clearer sense of
 the overall design of the application. This will help you understand how the application works, and how your changes
@@ -297,7 +304,7 @@ can affect the entire system.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">2.4.4. Updating documentation to match your fork</a></h4>
+<h4 id="updating-documentation-to-match-your-fork"><a class="link" href="#updating-documentation-to-match-your-fork">3.4.4. Updating documentation to match your fork</a></h4>
 <div class="paragraph">
 <p>Lastly, if you plan to develop this as a separate product (<em>i.e. instead of contributing to the
 <code>CS2103AUG2017-W11-B3/main</code>)</em>, you should replace the URL in the variable <code>repoURL</code> in <code>DeveloperGuide.adoc</code> and
@@ -308,10 +315,10 @@ can affect the entire system.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="design"><a class="link" href="#design">3. Design</a></h2>
+<h2 id="design"><a class="link" href="#design">4. Design</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="introduction-architecture"><a class="link" href="#introduction-architecture">3.1. Introduction: Architecture</a></h3>
+<h3 id="introduction-architecture"><a class="link" href="#introduction-architecture">4.1. Introduction: Architecture</a></h3>
 <div class="paragraph">
 <p>The <strong><em>Architecture Diagram</em></strong> below explains the high-level design of the application:</p>
 </div>
@@ -321,10 +328,10 @@ can affect the entire system.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 3.1.1 : Architecture Diagram</em></p>
+<p><em>Figure 4.1.1 : Architecture Diagram</em></p>
 </div>
 <div class="sect3">
-<h4 id="code-main-code-component"><a class="link" href="#code-main-code-component">3.1.1. <code>Main</code> Component</a></h4>
+<h4 id="code-main-code-component"><a class="link" href="#code-main-code-component">4.1.1. <code>Main</code> Component</a></h4>
 <div class="paragraph">
 <p><code>Main</code> has only one class called <a href="https://github.com/CS2103AUG2017-W11-B3/main//src/main/java/seedu/address/MainApp.java"><code>MainApp</code></a>. It is responsible
 for,</p>
@@ -341,7 +348,7 @@ for,</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="code-commons-code-component"><a class="link" href="#code-commons-code-component">3.1.2. <code>Commons</code> Component</a></h4>
+<h4 id="code-commons-code-component"><a class="link" href="#code-commons-code-component">4.1.2. <code>Commons</code> Component</a></h4>
 <div class="paragraph">
 <p><a href="#common-classes"><strong><code>Commons</code></strong></a> represents a collection of classes used by multiple other components. Two of those
 classes play important roles at the architecture level:</p>
@@ -360,7 +367,7 @@ communicate with other components using events (<em>i.e. a form of Event Driven 
 </div>
 </div>
 <div class="sect3">
-<h4 id="the-other-4-components"><a class="link" href="#the-other-4-components">3.1.3. The Other 4 Components</a></h4>
+<h4 id="the-other-4-components"><a class="link" href="#the-other-4-components">4.1.3. The Other 4 Components</a></h4>
 <div class="paragraph">
 <p>The rest of the App consists of four components:</p>
 </div>
@@ -396,9 +403,9 @@ communicate with other components using events (<em>i.e. a form of Event Driven 
 </div>
 </div>
 <div class="sect2">
-<h3 id="events-driven-nature-of-the-design"><a class="link" href="#events-driven-nature-of-the-design">3.2. Events-Driven nature of the design</a></h3>
+<h3 id="events-driven-nature-of-the-design"><a class="link" href="#events-driven-nature-of-the-design">4.2. Events-Driven nature of the design</a></h3>
 <div class="sect3">
-<h4 id="components-interaction"><a class="link" href="#components-interaction">3.2.1. Components Interaction</a></h4>
+<h4 id="components-interaction"><a class="link" href="#components-interaction">4.2.1. Components Interaction</a></h4>
 <div class="paragraph">
 <p>The Sequence Diagram below shows how the components interact for the scenario where the user issues the command
 <code>delete 1</code>:</p>
@@ -409,7 +416,7 @@ communicate with other components using events (<em>i.e. a form of Event Driven 
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 3.2.1.1 : Component interactions for <code>delete 1</code> command (part 1)</em></p>
+<p><em>Figure 4.2.1.1 : Component interactions for <code>delete 1</code> command (part 1)</em></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -434,7 +441,7 @@ to the hard disk and the status bar of the UI being updated to reflect the 'Last
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 3.2.1.2 : Component interactions for <code>delete 1</code> command (part 2)</em></p>
+<p><em>Figure 4.2.1.2 : Component interactions for <code>delete 1</code> command (part 2)</em></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -453,14 +460,14 @@ components.
 </div>
 </div>
 <div class="sect2">
-<h3 id="ui-component"><a class="link" href="#ui-component">3.3. UI Component</a></h3>
+<h3 id="ui-component"><a class="link" href="#ui-component">4.3. UI Component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/UiClassDiagram.png" alt="UiClassDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 3.3.1 : Structure of the UI Component</em></p>
+<p><em>Figure 4.3.1 : Structure of the UI Component</em></p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103AUG2017-W11-B3/main//src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
@@ -493,14 +500,14 @@ in the <code>src/main/resources/view</code> folder. For example, the layout of t
 </div>
 </div>
 <div class="sect2">
-<h3 id="logic-component"><a class="link" href="#logic-component">3.4. Logic component</a></h3>
+<h3 id="logic-component"><a class="link" href="#logic-component">4.4. Logic component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/LogicClassDiagram.png" alt="LogicClassDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 3.4.1 : Structure of the Logic Component</em></p>
+<p><em>Figure 4.4.1 : Structure of the Logic Component</em></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -508,8 +515,8 @@ in the <code>src/main/resources/view</code> folder. For example, the layout of t
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 3.4.2 : Structure of Commands in the Logic Component. This diagram shows finer details concerning <code>XYZCommand</code>
-and <code>Command</code> in Figure 3.4.1</em></p>
+<p><em>Figure 4.4.2 : Structure of Commands in the Logic Component. This diagram shows finer details concerning <code>XYZCommand</code>
+and <code>Command</code> in Figure 4.4.1</em></p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> :
@@ -541,18 +548,18 @@ API call:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 3.4.0c : Interactions Inside the Logic Component for the <code>delete 1</code> Command</em></p>
+<p><em>Figure 4.4.0c : Interactions Inside the Logic Component for the <code>delete 1</code> Command</em></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="model-component"><a class="link" href="#model-component">3.5. Model Component</a></h3>
+<h3 id="model-component"><a class="link" href="#model-component">4.5. Model Component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/ModelClassDiagram.png" alt="ModelClassDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 3.5.1 : Structure of the Model Component</em></p>
+<p><em>Figure 4.5.1 : Structure of the Model Component</em></p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103AUG2017-W11-B3/main//src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
@@ -579,14 +586,14 @@ so that the UI automatically updates when the data in the list change.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="storage-component"><a class="link" href="#storage-component">3.6. Storage Component</a></h3>
+<h3 id="storage-component"><a class="link" href="#storage-component">4.6. Storage Component</a></h3>
 <div class="imageblock">
 <div class="content">
 <img src="images/StorageClassDiagram.png" alt="StorageClassDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 3.6.1 : Structure of the Storage Component</em></p>
+<p><em>Figure 4.6.1 : Structure of the Storage Component</em></p>
 </div>
 <div class="paragraph">
 <p><strong>API</strong> : <a href="https://github.com/CS2103AUG2017-W11-B3/main//src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
@@ -606,7 +613,7 @@ so that the UI automatically updates when the data in the list change.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="common-classes"><a class="link" href="#common-classes">3.7. Common Classes</a></h3>
+<h3 id="common-classes"><a class="link" href="#common-classes">4.7. Common Classes</a></h3>
 <div class="paragraph">
 <p>Classes used by multiple components are in the <code>seedu.addressbook.commons</code> package.</p>
 </div>
@@ -627,13 +634,13 @@ folder. To update a diagram, just modify the objects inside <code>.pptx</code> f
 </div>
 </div>
 <div class="sect1">
-<h2 id="implementation"><a class="link" href="#implementation">4. Implementation</a></h2>
+<h2 id="implementation"><a class="link" href="#implementation">5. Implementation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 </div>
 <div class="sect2">
-<h3 id="undo-redo-mechanism"><a class="link" href="#undo-redo-mechanism">4.1. Undo/Redo Mechanism</a></h3>
+<h3 id="undo-redo-mechanism"><a class="link" href="#undo-redo-mechanism">5.1. Undo/Redo Mechanism</a></h3>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by an <code>UndoRedoStack</code>, which resides inside <code>LogicManager</code>. It supports undoing
 and redoing of commands that modifies the state of the address book (<em>e.g. <code>add</code>, <code>edit`</em>). Such commands will inherit
@@ -649,7 +656,7 @@ The following diagram shows the inheritance diagram for commands:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.1.1 : Inheritance diagram for Undo/Redo command</em></p>
+<p><em>Figure 5.1.1 : Inheritance diagram for Undo/Redo command</em></p>
 </div>
 <div class="paragraph">
 <p><code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone,
@@ -708,7 +715,7 @@ of the address book is saved before the <code>delete 5</code> command executes. 
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.1.2</em></p>
+<p><em>Figure 5.1.2</em></p>
 </div>
 <div class="paragraph">
 <p>As the user continues to use the program, more commands are added into the <code>undoStack</code>. For example, the user may
@@ -720,7 +727,7 @@ execute <code>add n/David &#8230;&#8203;</code> to add a new person like so:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.1.3</em></p>
+<p><em>Figure 5.1.3</em></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -747,7 +754,7 @@ address book to the state before the <code>add</code> command executed as shown:
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.1.4</em></p>
+<p><em>Figure 5.1.4</em></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -763,7 +770,7 @@ popping the <code>undoStack</code>.
 </table>
 </div>
 <div class="sect3">
-<h4 id="sequence-diagram"><a class="link" href="#sequence-diagram">4.1.1. Sequence Diagram</a></h4>
+<h4 id="sequence-diagram"><a class="link" href="#sequence-diagram">5.1.1. Sequence Diagram</a></h4>
 <div class="paragraph">
 <p>The following <a href="#sequence-diagram">sequence diagram </a>shows how the undo operation works:</p>
 </div>
@@ -773,7 +780,7 @@ popping the <code>undoStack</code>.
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.1.1.1</em></p>
+<p><em>Figure 5.1.1.1</em></p>
 </div>
 <div class="paragraph">
 <p>The redo does the exact opposite: pops from <code>redoStack</code>, push to <code>undoStack</code>, and restores the address book to the state
@@ -803,7 +810,7 @@ time the <code>redoStack</code> is no longer empty. It will be purged as it no l
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.1.1.2</em></p>
+<p><em>Figure 5.1.1.2</em></p>
 </div>
 <div class="paragraph">
 <p>Commands that are not undoable are not added into the <code>undoStack</code>. For example, <code>list</code>, which inherits from <code>Command</code>
@@ -815,7 +822,7 @@ rather than <code>UndoableCommand</code>, will not be added after execution:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.1.1.3</em></p>
+<p><em>Figure 5.1.1.3</em></p>
 </div>
 <div class="paragraph">
 <p>The following activity diagram summarize what happens inside the <code>UndoRedoStack</code> when a user executes a new command:</p>
@@ -826,11 +833,11 @@ rather than <code>UndoableCommand</code>, will not be added after execution:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.1.1.4</em></p>
+<p><em>Figure 5.1.1.4</em></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.2. Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">5.1.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation of <code>UndoableCommand</code>.<br>
 <strong>Alternative 1 (current choice):</strong> Add a new abstract method <code>executeUndoableCommand()</code>.<br>
@@ -884,16 +891,17 @@ things.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="person-panel"><a class="link" href="#person-panel">4.2. Person Panel</a></h3>
+<h3 id="person-panel"><a class="link" href="#person-panel">5.2. Person Panel</a></h3>
 <div class="paragraph">
-<p>The PersonPanel replaces the previous BrowserPanel, and is a crucial part of <code>MainWindow</code>.</p>
+<p>The <code>PersonPanel</code> replaces the previous <code>BrowserPanel</code>, and is a crucial part of <code>MainWindow</code>. It is an event-driven
+component that displays contact information depending on the user&#8217;s actions</p>
 </div>
 <div class="sect3">
-<h4 id="java-implementation"><a class="link" href="#java-implementation">4.2.1. Java Implementation</a></h4>
+<h4 id="java-implementation"><a class="link" href="#java-implementation">5.2.1. Java Implementation</a></h4>
 <div class="paragraph">
 <p>By taking advantage of the <code>java.util.logging package</code>, PersonPanel is able to display all of the details of a contact
-(<em>name, address, email, contact number, birthday, tags</em>) selected in <code>PersonCard</code>. This implementation can be seen from
-the following 2 code snippets:</p>
+(<em>name, address, email, contact number, birthday, avatar, tags</em>) selected in <code>PersonCard</code>. This implementation can be
+seen from the following 2 code snippets:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -910,7 +918,8 @@ the following 2 code snippets:</p>
 </div>
 <div class="paragraph">
 <p><strong>Code Snippet 1 (<code>handlePersonPanelSelectionChangedEvent()</code>):</strong> Whenever a contact is selected, an event will be
-triggered. The method will respond to the event by obtaining a PersonCard variable and ReadOnlyPerson variable (<em>which contains all the details of the contact</em>), and pass it into loadPersonPage().</p>
+triggered. The method will respond to the event by obtaining a PersonCard variable and ReadOnlyPerson variable
+(<em>which contains all the details of the contact</em>), and pass it into loadPersonPage().</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -945,9 +954,25 @@ Upon opening the application, no contact details will be displayed since no cont
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>To better illustrate the code snippets, let us look at the following sequence diagram when a user selects a contact
+found in <code>PersonListPanel</code>:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SequenceDiagramSelectToPersonPanel.png" alt="SequenceDiagramSelectToPersonPanel" width="760">
+</div>
+</div>
+<div class="paragraph">
+<p><em>Figure 5.2.1.1: Sequence Diagram for Selection</em></p>
+</div>
+<div class="paragraph">
+<p>When a contact in <code>PersonListPanel</code> is selected via <code>command</code> or mouse click, this will result in the <code>EventsCenter</code>
+returning a <code>ReadOnlyPerson</code> of the selected contact for display in the <code>PersonPanel</code>.</p>
+</div>
 </div>
 <div class="sect3">
-<h4 id="layout-implementation"><a class="link" href="#layout-implementation">4.2.2. Layout Implementation</a></h4>
+<h4 id="layout-implementation"><a class="link" href="#layout-implementation">5.2.2. Layout Implementation</a></h4>
 <div class="paragraph">
 <p>The layout for PersonPanel is specified in <code>PersonPanel.fxml</code>. Visually, it can be broken down into 2 parts as shown:</p>
 </div>
@@ -957,7 +982,7 @@ Upon opening the application, no contact details will be displayed since no cont
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.2.2.1: Visual breakdown of PersonPanel</em></p>
+<p><em>Figure 5.2.2.1: Visual Breakdown of PersonPanel</em></p>
 </div>
 <div class="paragraph">
 <p><strong>Part 1 (primaryDetails):</strong> This is subdivided into parts A and B. Part A contains the <a href="#avatar">avatar</a> picture of the contact.
@@ -976,7 +1001,7 @@ section appears simple but empty. We plan to implement more features for v2.0, s
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">4.2.3. Design Considerations</a></h4>
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">5.2.3. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Display of Contact&#8217;s Details.<br>
 <strong>Alternative 1 (current choice):</strong> Replace BrowserPanel with PersonPanel, which displays all of the contacts details.
@@ -1003,50 +1028,54 @@ contact&#8217;s details.<br>
 <p><strong>Aspect:</strong> Addition of Icons for secondaryDetails.<br>
 <strong>Alternative 1 (current choice):</strong> Place icons on the left of each contact detail.<br>
 <strong>Pros:</strong> Quick to implement and makes it easier for user to differentiate between each contact detail. Icons can be
-easily taken from Google&#8217;s Material Design.<br>
-<strong>Cons:</strong> If we were to include more contact details (<em>e.g. social media links</em>) in the future, then we would have to keep adding more icons; relevant icons may not be found on Google&#8217;s Material Design. <br>
+easily taken from Google&#8217;s Material Design (<em>or any other design website</em>).<br>
+<strong>Cons:</strong> If we were to include more contact details (<em>e.g. social media links</em>) in the future, then we would have to
+keep adding more icons; relevant icons may not be found on Google&#8217;s Material Design. <br>
 <strong>Alternative 2:</strong> Use different colours for each contact detail.<br>
 <strong>Pros:</strong> Even more quick to implement since it only involves CSS changes.<br>
-<strong>Cons:</strong> Bad idea design-wise because it violates the <a href="#tradic-colour-scheme">Triadic Colour Scheme</a>. It could make the application look less professional and unattractive.</p>
+<strong>Cons:</strong> Bad idea design-wise because it violates the <a href="#tradic-colour-scheme">Triadic Colour Scheme</a>. It could make
+the application look less professional and unattractive.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="avatar"><a class="link" href="#avatar">4.3. Avatar</a></h3>
+<h3 id="avatar"><a class="link" href="#avatar">5.3. Avatar</a></h3>
 <div class="paragraph">
-<p>The Avatar class is a new contact detail that displays a display picture obtained
+<p>The <code>Avatar</code> class is a new contact detail that displays a display picture obtained
 via a valid Uniform Resource Locator (URL) or a local directory path in your computer.
-If no display picture is assigned to the contact, then creates a default placeholder image.
-In order for the user to upload an avatar for the contact, he/she can use the Add command or Graphical
+If no display picture is assigned to the contact, then creates a default placeholder image.</p>
+</div>
+<div class="paragraph">
+<p>In order for the user to upload an <code>Avatar</code> for the contact, he/she can use the Add/Edit <code>command</code> or Graphical
 User Interface (GUI) upload (<code>AvatarWindow</code>) to do so.</p>
 </div>
 <div class="sect3">
-<h4 id="java-implementation-code-avatar-code"><a class="link" href="#java-implementation-code-avatar-code">4.3.1. Java Implementation: <code>Avatar</code></a></h4>
+<h4 id="java-implementation-code-avatar-code"><a class="link" href="#java-implementation-code-avatar-code">5.3.1. Java Implementation: <code>Avatar</code></a></h4>
 <div class="paragraph">
-<p>The display and storage of a display picture can be seen in the following code snippets:</p>
+<p>The display and storage of <code>Avatar</code> can be seen in the following code snippets:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> Avatar() {
     AvatarUtil placeholder = <span class="keyword">new</span> AvatarUtil();
     image = placeholder.getPlaceholderAvatar();
-    value = <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>;
+    value = DEFAULT_VALUE;
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>Code Snippet 1 (<code>Avatar()</code>):</strong> The default constructor for Avatar is used when no display
-picture is assigned to a newly added contact. The default placeholder avatar is generated
-with <code>AvatarUtil</code>.</p>
+<p><strong>Code Snippet 1 (<code>Avatar()</code>):</strong> The default constructor for <code>Avatar</code> is used when no display
+picture is assigned to a newly added contact. The default placeholder <code>Avatar</code> is generated
+with the dependant class <code>AvatarUtil</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java"><span class="directive">public</span> Avatar(<span class="predefined-type">String</span> url) <span class="directive">throws</span> IllegalValueException {
     <span class="keyword">try</span> {
-        <span class="keyword">if</span> (url.isEmpty()) {
+        <span class="keyword">if</span> (url.isEmpty() || DEFAULT_VALUE.equals(url)) {
             AvatarUtil placeholder = <span class="keyword">new</span> AvatarUtil();
             image = placeholder.getPlaceholderAvatar();
-            value = <span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>;
+            value = DEFAULT_VALUE;
         } <span class="keyword">else</span> {
             <span class="predefined-type">File</span> defaultAvatar = <span class="keyword">new</span> <span class="predefined-type">File</span>(url);
 
@@ -1067,7 +1096,7 @@ is valid (i.e. non-empty and existing), then it will parse the URL and read the 
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight"><code data-lang="java">            <span class="keyword">if</span> (!isSavedInData(url)) {
-                <span class="predefined-type">String</span> outputName = <span class="string"><span class="delimiter">&quot;</span><span class="content">/data/</span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.url.hashCode() + <span class="string"><span class="delimiter">&quot;</span><span class="content">.png</span><span class="delimiter">&quot;</span></span>;
+                <span class="predefined-type">String</span> outputName = <span class="string"><span class="delimiter">&quot;</span><span class="content">/data/</span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.image.hashCode() + <span class="string"><span class="delimiter">&quot;</span><span class="content">.png</span><span class="delimiter">&quot;</span></span>;
                 <span class="predefined-type">File</span> outputImage = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="predefined-type">System</span>.getProperty(<span class="string"><span class="delimiter">&quot;</span><span class="content">user.dir</span><span class="delimiter">&quot;</span></span>) + outputName);
 
                 <span class="predefined-type">File</span> parentDirectory = outputImage.getParentFile();
@@ -1090,9 +1119,33 @@ is valid (i.e. non-empty and existing), then it will parse the URL and read the 
 <p><strong>Code Snippet 2B (<code>Avatar(String url)</code>):</strong> If the image given has not yet been stored in the data
 directory, it will generate a new file and save it.</p>
 </div>
+<div class="paragraph">
+<p>To better illustrate the code snippets, here is a sequence diagram when a user changes a person&#8217;s avatar with a new
+image (<em>that is not currently stored in the data folder</em>):</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SequenceDiagramEditContactAvatar.png" alt="SequenceDiagramEditContactAvatar" width="760">
+</div>
+</div>
+<div class="paragraph">
+<p><em>Figure 5.3.1.1: Sequence Diagram for Changing Avatar</em></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Changing the <code>Avatar</code> of a contact will result in an immediate display change to the user.
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect3">
-<h4 id="dependant-class-code-avatarutil-code"><a class="link" href="#dependant-class-code-avatarutil-code">4.3.2. Dependant Class: <code>AvatarUtil</code></a></h4>
+<h4 id="dependant-class-code-avatarutil-code"><a class="link" href="#dependant-class-code-avatarutil-code">5.3.2. Dependant Class: <code>AvatarUtil</code></a></h4>
 <div class="paragraph">
 <p>AvatarUtil generates a default placeholder image if the contact is not given a display picture. It relies
 on the <code>java.awt</code> library to generate a picture drawn by the methods found in <code>Graphics2D</code> and <code>Color</code>.</p>
@@ -1111,11 +1164,21 @@ You can find the full implementation of <code>AvatarUtil</code> in the folder <c
 </div>
 </div>
 <div class="sect3">
-<h4 id="dependant-class-code-avatarwindow-code"><a class="link" href="#dependant-class-code-avatarwindow-code">4.3.3. Dependant Class: <code>AvatarWindow</code></a></h4>
+<h4 id="dependant-class-code-avatarwindow-code"><a class="link" href="#dependant-class-code-avatarwindow-code">5.3.3. Dependant Class: <code>AvatarWindow</code></a></h4>
 <div class="paragraph">
-<p>AvatarWindow is a UI component and is triggered when the current avatar of a contact is clicked on. A window
-will appear for the user to load and save a picture from the computer. If a valid picture is loaded and saved,
-it will create an Edit command and raise a new event; this event is the same as typing an actual valid edit command,
+<p>AvatarWindow is a UI component and is triggered when the current avatar of a contact is clicked on as such:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UiPersonPanel.png" alt="UiPersonPanel" width="760">
+</div>
+</div>
+<div class="paragraph">
+<p><em>Figure 5.3.3.1: Avatar Window Pop-up</em></p>
+</div>
+<div class="paragraph">
+<p>A window will appear for the user to load and save a picture from the computer. If a valid picture is loaded and saved,
+it will create an <code>Edit</code> command and raise a new event; this event is the same as typing an actual valid edit command,
 and can also be undone or redone as per normal.</p>
 </div>
 <div class="admonitionblock note">
@@ -1132,7 +1195,7 @@ You can find the full implementation of <code>AvatarWindow</code> in the folder 
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">4.3.4. Design Considerations</a></h4>
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">5.3.4. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Additional ways of changing <code>Avatar</code>.<br>
 <strong>Alternative 1:</strong> Only allow user to use the Add and Edit commands to change the Avatar of the contact.<br>
@@ -1159,7 +1222,7 @@ replaced by the default placeholder.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="birthday"><a class="link" href="#birthday">4.4. Birthday</a></h3>
+<h3 id="birthday"><a class="link" href="#birthday">5.4. Birthday</a></h3>
 <div class="paragraph">
 <p>The Birthday class enables users to store their contact&#8217;s birthday details in K.N.S. Address Book. Birthday details
 should be inputted in dd/mm/yyyy form, and will be stored in the address book in the same form. If the user chooses not
@@ -1168,7 +1231,7 @@ birthday, which is <code>-</code>, and the value that will appear in the Person 
 value.</p>
 </div>
 <div class="sect3">
-<h4 id="java-implementation-2"><a class="link" href="#java-implementation-2">4.4.1. Java Implementation</a></h4>
+<h4 id="java-implementation-2"><a class="link" href="#java-implementation-2">5.4.1. Java Implementation</a></h4>
 <div class="paragraph">
 <p>The Birthday class is implemented in similar way like other fields, such as address, phone, and email.</p>
 </div>
@@ -1186,7 +1249,7 @@ value.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.2. Design Considerations</a></h4>
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">5.4.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Birthday Input Format<br>
 <strong>Alternative 1 (current choice):</strong> Using dd/mm/yyyy as the input format <br>
@@ -1202,7 +1265,7 @@ but the address book will interpret it as 3 May.<br>
 </div>
 </div>
 <div class="sect2">
-<h3 id="partial-find"><a class="link" href="#partial-find">4.5. Partial Find</a></h3>
+<h3 id="partial-find"><a class="link" href="#partial-find">5.5. Partial Find</a></h3>
 <div class="paragraph">
 <p>The partial matching of the Find command is implemented by creating a method in the <code>StringUtil</code> class with the help of
 the <code>regionMatches</code> method from the java <code>String</code> class.
@@ -1264,7 +1327,7 @@ method to return <code>true</code>.<br></p>
 (<em>e.g.`NameContainsKeywordsPredicate`</em>) with the new method so that the Find command actually uses partial matching.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.1. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">5.5.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Exclusive use of partial matching.<br>
 <strong>Alternative 1 (current choice):</strong> Find command exclusively uses partial matching.<br>
@@ -1290,7 +1353,7 @@ partial matching.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="find-by-all-field"><a class="link" href="#find-by-all-field">4.6. Find by All Field</a></h3>
+<h3 id="find-by-all-field"><a class="link" href="#find-by-all-field">5.6. Find by All Field</a></h3>
 <div class="paragraph">
 <p>The find by all field feature is implemented by adding one argument, prefix of field that want to be searched, to the
 <code>find</code> command parameter. If the user does not specify the prefix, the address book will automatically search the query
@@ -1299,7 +1362,7 @@ implemented in &lt;field name&gt;ContainsKeywordPredicate class (i.e. NameContai
 AddressContainsKeywordPredicate) inside Model component.</p>
 </div>
 <div class="sect3">
-<h4 id="java-implementation-3"><a class="link" href="#java-implementation-3">4.6.1. Java Implementation</a></h4>
+<h4 id="java-implementation-3"><a class="link" href="#java-implementation-3">5.6.1. Java Implementation</a></h4>
 <div class="paragraph">
 <p>The FindCommandParser is now able to parse the additional prefix argument, as shown in the code snippet below:</p>
 </div>
@@ -1344,7 +1407,7 @@ The method is similar for other field.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">5.6.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation of find by all field<br>
 <strong>Alternative 1 (current choice):</strong> Enables user to find by all field (name, phone, email, address, birthday, and
@@ -1377,7 +1440,7 @@ address of their contact.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-tag-and-delete-tag"><a class="link" href="#add-tag-and-delete-tag">4.7. Add Tag and Delete Tag</a></h3>
+<h3 id="add-tag-and-delete-tag"><a class="link" href="#add-tag-and-delete-tag">5.7. Add Tag and Delete Tag</a></h3>
 <div class="paragraph">
 <p>Add tag and delete tag mechanism is facilitated by the <code>addtag</code> command and <code>deletetag</code> command, or their equivalent
 aliases <code>at</code> and <code>dt</code>, which is useful for adding and deleting tags in a person&#8217;s tag list. On previous versions
@@ -1387,7 +1450,7 @@ didn&#8217;t want to edit. <code>addtag</code> command and <code>deletetag</code
 command, without retyping all the current tags.</p>
 </div>
 <div class="sect3">
-<h4 id="java-implementation-4"><a class="link" href="#java-implementation-4">4.7.1. Java Implementation</a></h4>
+<h4 id="java-implementation-4"><a class="link" href="#java-implementation-4">5.7.1. Java Implementation</a></h4>
 <div class="paragraph">
 <p>As <code>addtag</code> and <code>deletetag</code> are commands, their implementations are a part of Logic component in the address book.
 The implementation of add tag and delete tag can be found in AddTagCommand and DeleteTagCommand. AddTagCommand and
@@ -1453,7 +1516,7 @@ like <code>addtag</code> command, shown by the following code snippet:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.7.2. Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">5.7.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation of AddTagCommand and DeleteTagCommand<br>
 <strong>Alternative 1 (current choice):</strong> Implementing a new command <code>addtag</code> and <code>deletetag</code> instead of using the existing
@@ -1469,7 +1532,151 @@ mistype existing tags or not typing a complete set of existing tags while using 
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.8. Logging</a></h3>
+<h3 id="theme-switcher"><a class="link" href="#theme-switcher">5.8. Theme Switcher</a></h3>
+<div class="paragraph">
+<p>The Theme Switcher allows users to change the appearance of the application via the command <code>theme</code> or the drop-down
+selection in the <code>MenuBar</code>. There are 5 themes for users to choose from: Light, Dark, Red, Blue, and Green. Here is what
+the application looks like in each theme:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/UiAllThemes.gif" alt="UiAllThemes" width="668">
+</div>
+</div>
+<div class="paragraph">
+<p><em>Figure 5.7.1: All 5 Themes of the Application</em></p>
+</div>
+<div class="sect3">
+<h4 id="java-implementation-5"><a class="link" href="#java-implementation-5">5.8.1. Java Implementation</a></h4>
+<div class="paragraph">
+<p>The Theme Switcher mainly spans over the <code>Logic</code> and <code>UI</code> components.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Override</span>
+<span class="directive">public</span> CommandResult execute() <span class="directive">throws</span> CommandException {
+    <span class="keyword">if</span> (!isValidTheme(<span class="local-variable">this</span>.theme)) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(Messages.MESSAGE_INVALID_THEME);
+    }
+    <span class="keyword">if</span> ((MainWindow.getCurrentTheme()).contains(<span class="local-variable">this</span>.theme)) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> CommandException(<span class="string"><span class="delimiter">&quot;</span><span class="content">Theme is already set to </span><span class="delimiter">&quot;</span></span> + <span class="local-variable">this</span>.theme + <span class="string"><span class="delimiter">&quot;</span><span class="content">!</span><span class="delimiter">&quot;</span></span>);
+    }
+    EventsCenter.getInstance().post(<span class="keyword">new</span> ChangeThemeRequestEvent(<span class="local-variable">this</span>.theme));
+    <span class="keyword">return</span> <span class="keyword">new</span> CommandResult(<span class="predefined-type">String</span>.format(MESSAGE_THEME_SUCCESS, <span class="local-variable">this</span>.theme));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Code Snippet 1A (<code>execute()</code>):</strong> When the <code>theme</code> command is executed, it checks for two conditions:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>Theme Validity</strong> &#8594; It checks the input arguments for the 5 preset themes. If an invalid theme is given, then a
+<code>CommandException</code> is thrown to inform the user that their input theme does not exist.</p>
+</li>
+<li>
+<p><strong>Current Theme Displayed</strong> &#8594; In order to prevent the user from setting the current theme to the same exact theme, it
+checks whether the valid argument is currently the displayed theme. If it is, then a <code>CommandException</code> is thrown to
+inform the user of their error.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>If the two conditions are fulfilled, then the <code>theme</code> command will generate a new <code>ChangeThemeRequestEvent</code> for
+<code>MainWindow</code> to accept, and return a successful <code>CommandResult</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@Subscribe</span>
+<span class="directive">public</span> <span class="type">void</span> handleChangeThemeRequestEvent(ChangeThemeRequestEvent event) <span class="directive">throws</span> CommandException, <span class="exception">ParseException</span> {
+    logger.info(LogsCenter.getEventHandlingLogMessage(event));
+    mainWindow.getStylesheets().remove(currentTheme);
+    prefs.setAddressBookTheme(event.theme + <span class="string"><span class="delimiter">&quot;</span><span class="content">Theme.css</span><span class="delimiter">&quot;</span></span>);
+    currentTheme = <span class="string"><span class="delimiter">&quot;</span><span class="content">view/</span><span class="delimiter">&quot;</span></span> + prefs.getAddressBookTheme();
+    mainWindow.getStylesheets().add(currentTheme);
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Code Snippet 1B (<code>handleChangeThemeRequestEvent(ChangeThemeRequestEvent event)</code>):</strong> The <code>event</code> generated by the
+<code>theme</code> command is received in <code>MainWindow</code>. It takes removes the CSS for the current theme, and replaces it with the
+input theme&#8217;s CSS. The change in appearance is reflected immediately.</p>
+</div>
+<div class="paragraph">
+<p>To better illustrate code snippets 1A and 1B, the following sequence diagram demonstrates a user entering a valid <code>theme</code> command input:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/SequenceDiagramValidThemeCommand.png" alt="SequenceDiagramValidThemeCommand" width="668">
+</div>
+</div>
+<div class="paragraph">
+<p><em>Figure 5.7.1.1: Sequence Diagram for Valid Theme Command</em></p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>MainWindow</code> does not need to check for the theme validity or whether the same theme is being set, because the <code>theme</code>
+command has already accounted for these conditions.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java"><span class="annotation">@FXML</span>
+<span class="directive">private</span> <span class="type">void</span> setToVALIDTheme() {
+    <span class="keyword">if</span> (checkSameTheme(<span class="string"><span class="delimiter">&quot;</span><span class="content">VALID</span><span class="delimiter">&quot;</span></span>)) {
+        <span class="keyword">return</span>;
+    }
+    mainWindow.getStylesheets().remove(currentTheme);
+    prefs.setAddressBookTheme(<span class="string"><span class="delimiter">&quot;</span><span class="content">VALIDTheme.css</span><span class="delimiter">&quot;</span></span>);
+    currentTheme = <span class="string"><span class="delimiter">&quot;</span><span class="content">view/</span><span class="delimiter">&quot;</span></span> + prefs.getAddressBookTheme();
+    mainWindow.getStylesheets().add(currentTheme);
+    EventsCenter.getInstance().post(<span class="keyword">new</span> ChangeThemeRequestEvent(<span class="string"><span class="delimiter">&quot;</span><span class="content">VALID</span><span class="delimiter">&quot;</span></span>));
+    raise(<span class="keyword">new</span> NewResultAvailableEvent(<span class="string"><span class="delimiter">&quot;</span><span class="content">Theme updated to: VALID</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">false</span>));
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Code Snippet 2 (<code>setToVALIDTheme()</code>):</strong> Where "<em>VALID</em>" is Light, Dark, Red, Blue or Green. If the user uses the
+<code>MenuBar</code> to change the current theme, then it will call the appropriate method to change the current theme to it. Also,
+the method ensures that if the user selects the theme that is already being displayed, it will raise a
+<code>NewResultAvailableEvent</code> to inform the user of their error.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<code>MainWindow</code> needs to check whether the same theme is being set since no <code>theme</code> command is being executed.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-8"><a class="link" href="#design-considerations-8">5.8.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Providing a GUI option for switching themes<br>
+<strong>Alternative 1 (current choice):</strong> Provide a GUI option via the <code>MenuBar</code>.<br>
+<strong>Pros:</strong> Simple to implement and users can change themes seamlessly.<br>
+<strong>Cons:</strong> Users will not know what the colour scheme of the theme looks like unless they change to it.<br>
+<strong>Alternative 2:</strong> Provide a GUI option via coloured buttons.<br>
+<strong>Pros:</strong> Users will be able to see the colour scheme of the theme before changing to it.<br>
+<strong>Cons:</strong> Users may get confused as to what these buttons are for.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="logging"><a class="link" href="#logging">5.9. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and
 logging destinations.</p>
@@ -1511,7 +1718,7 @@ just its size.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuration"><a class="link" href="#configuration">4.9. Configuration</a></h3>
+<h3 id="configuration"><a class="link" href="#configuration">5.10. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file
 (<em>default:</em> <code>config.json</code>).</p>
@@ -1520,7 +1727,7 @@ just its size.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="documentation"><a class="link" href="#documentation">5. Documentation</a></h2>
+<h2 id="documentation"><a class="link" href="#documentation">6. Documentation</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>We use asciidoc for writing documentation.</p>
@@ -1539,7 +1746,7 @@ in formatting.
 </table>
 </div>
 <div class="sect2">
-<h3 id="editing-documentation"><a class="link" href="#editing-documentation">5.1. Editing Documentation</a></h3>
+<h3 id="editing-documentation"><a class="link" href="#editing-documentation">6.1. Editing Documentation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingGradle.html#rendering-asciidoc-files">UsingGradle.adoc</a> to learn how to render <code>.adoc</code> files locally to preview
 the end result of your edits. Alternatively, you can download the AsciiDoc plugin for IntelliJ, which allows you to
@@ -1547,13 +1754,13 @@ preview the changes you have made to your <code>.adoc</code> files in real-time.
 </div>
 </div>
 <div class="sect2">
-<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">5.2. Publishing Documentation</a></h3>
+<h3 id="publishing-documentation"><a class="link" href="#publishing-documentation">6.2. Publishing Documentation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingTravis.html#deploying-github-pages">UsingTravis.adoc</a> to learn how to deploy GitHub Pages using Travis.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">5.3. Converting Documentation to PDF format</a></h3>
+<h3 id="converting-documentation-to-pdf-format"><a class="link" href="#converting-documentation-to-pdf-format">6.3. Converting Documentation to PDF format</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://www.google.com/chrome/browser/desktop/">Google Chrome</a> for converting documentation to PDF format, as
 Chrome&#8217;s PDF engine preserves hyperlinks used in webpages.</p>
@@ -1586,16 +1793,16 @@ use the settings indicated in the screenshot below.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 5.3.1 : Saving documentation as PDF files in Chrome</em></p>
+<p><em>Figure 6.3.1 : Saving documentation as PDF files in Chrome</em></p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="testing"><a class="link" href="#testing">6. Testing</a></h2>
+<h2 id="testing"><a class="link" href="#testing">7. Testing</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="running-tests"><a class="link" href="#running-tests">6.1. Running Tests</a></h3>
+<h3 id="running-tests"><a class="link" href="#running-tests">7.1. Running Tests</a></h3>
 <div class="paragraph">
 <p>There are three ways to run tests.</p>
 </div>
@@ -1660,7 +1867,7 @@ In the headless mode, GUI tests do not show up on the screen. That means the dev
 </div>
 </div>
 <div class="sect2">
-<h3 id="types-of-tests"><a class="link" href="#types-of-tests">6.2. Types of tests</a></h3>
+<h3 id="types-of-tests"><a class="link" href="#types-of-tests">7.2. Types of tests</a></h3>
 <div class="paragraph">
 <p>We have two types of tests:</p>
 </div>
@@ -1705,7 +1912,7 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">6.3. Troubleshooting Testing</a></h3>
+<h3 id="troubleshooting-testing"><a class="link" href="#troubleshooting-testing">7.3. Troubleshooting Testing</a></h3>
 <div class="paragraph">
 <p><strong>Problem: <code>HelpWindowTest</code> fails with a <code>NullPointerException</code>.</strong></p>
 </div>
@@ -1723,23 +1930,23 @@ e.g. <code>seedu.address.logic.LogicManagerTest</code></p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="dev-ops"><a class="link" href="#dev-ops">7. Dev Ops</a></h2>
+<h2 id="dev-ops"><a class="link" href="#dev-ops">8. Dev Ops</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="build-automation"><a class="link" href="#build-automation">7.1. Build Automation</a></h3>
+<h3 id="build-automation"><a class="link" href="#build-automation">8.1. Build Automation</a></h3>
 <div class="paragraph">
 <p>See <a href="UsingGradle.html">UsingGradle.adoc</a> to learn how to use Gradle for build automation.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="continuous-integration"><a class="link" href="#continuous-integration">7.2. Continuous Integration</a></h3>
+<h3 id="continuous-integration"><a class="link" href="#continuous-integration">8.2. Continuous Integration</a></h3>
 <div class="paragraph">
 <p>We use <a href="https://travis-ci.org/">Travis CI</a> and <a href="https://www.appveyor.com/">AppVeyor</a> to perform <em>Continuous Integration</em> on
 our projects. See <a href="UsingTravis.html">UsingTravis.adoc</a> and <a href="UsingAppVeyor.html">UsingAppVeyor.adoc</a> for more details.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="making-a-release"><a class="link" href="#making-a-release">7.3. Making a Release</a></h3>
+<h3 id="making-a-release"><a class="link" href="#making-a-release">8.3. Making a Release</a></h3>
 <div class="paragraph">
 <p>Here are the steps to create a new release.</p>
 </div>
@@ -1762,7 +1969,7 @@ you created.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">7.4. Managing Dependencies</a></h3>
+<h3 id="managing-dependencies"><a class="link" href="#managing-dependencies">8.4. Managing Dependencies</a></h3>
 <div class="paragraph">
 <p>A project often depends on third-party libraries. For example, Address Book depends on the
 <a href="http://wiki.fasterxml.com/JacksonHome">Jackson library</a> for XML parsing. Managing these dependencies can be automated
@@ -1972,6 +2179,12 @@ seeing them by accident</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">set multiple instances of app to be in sync</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">use address book across multiple devices
 seamlessly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">picky user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">change the colour appearance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">view my address book in my favourite colour scheme</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>*</code></p></td>
@@ -2368,7 +2581,7 @@ and modified.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 06:16:35 +00:00
+Last updated 2017-11-13 06:51:57 +00:00
 </div>
 </div>
 </body>
