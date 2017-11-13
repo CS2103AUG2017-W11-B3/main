@@ -330,7 +330,7 @@ can affect the entire system.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.1.1 : Architecture Diagram</em></p>
+<p><em>Figure 4.1.1: Architecture Diagram</em></p>
 </div>
 <div class="sect3">
 <h4 id="code-main-code-component"><a class="link" href="#code-main-code-component">4.1.1. <code>Main</code> Component</a></h4>
@@ -358,12 +358,12 @@ classes play important roles at the architecture level:</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>EventsCenter</code> : This class (<em>written using
+<p><code>EventsCenter</code>: This class (<em>written using
 <a href="https://github.com/google/guava/wiki/EventBusExplained">Google&#8217;s Event Bus library</a></em>) is used by components to
 communicate with other components using events (<em>i.e. a form of Event Driven design</em>)</p>
 </li>
 <li>
-<p><code>LogsCenter</code> : Used by most classes to write log messages to the application&#8217;s log file.</p>
+<p><code>LogsCenter</code>: Used by most classes to write log messages to the application&#8217;s log file.</p>
 </li>
 </ul>
 </div>
@@ -376,16 +376,16 @@ communicate with other components using events (<em>i.e. a form of Event Driven 
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#ui-component"><strong><code>UI</code></strong></a> : The user interface (<em>UI</em>) of the application.</p>
+<p><a href="#ui-component"><strong><code>UI</code></strong></a>: The user interface (<em>UI</em>) of the application.</p>
 </li>
 <li>
-<p><a href="#logic-component"><strong><code>Logic</code></strong></a> : The command executor.</p>
+<p><a href="#logic-component"><strong><code>Logic</code></strong></a>: The command executor.</p>
 </li>
 <li>
-<p><a href="#model-component"><strong><code>Model</code></strong></a> : Holds the data of the App in-memory.</p>
+<p><a href="#model-component"><strong><code>Model</code></strong></a>: Holds the data of the App in-memory.</p>
 </li>
 <li>
-<p><a href="#storage-component"><strong><code>Storage</code></strong></a> : Reads data from, and writes data to, the hard disk.</p>
+<p><a href="#storage-component"><strong><code>Storage</code></strong></a>: Reads data from, and writes data to, the hard disk.</p>
 </li>
 </ul>
 </div>
@@ -418,7 +418,7 @@ communicate with other components using events (<em>i.e. a form of Event Driven 
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.2.1.1 : Component interactions for <code>delete 1</code> command (part 1)</em></p>
+<p><em>Figure 4.2.1.1: Component interactions for <code>delete 1</code> command (part 1)</em></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -443,7 +443,7 @@ to the hard disk and the status bar of the UI being updated to reflect the 'Last
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.2.1.2 : Component interactions for <code>delete 1</code> command (part 2)</em></p>
+<p><em>Figure 4.2.1.2: Component interactions for <code>delete 1</code> command (part 2)</em></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -469,10 +469,10 @@ components.
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.3.1 : Structure of the UI Component</em></p>
+<p><em>Figure 4.3.1: Structure of the UI Component</em></p>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103AUG2017-W11-B3/main//src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+<p><strong>API</strong>: <a href="https://github.com/CS2103AUG2017-W11-B3/main//src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>PersonListPanel</code>,
@@ -509,7 +509,7 @@ in the <code>src/main/resources/view</code> folder. For example, the layout of t
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.4.1 : Structure of the Logic Component</em></p>
+<p><em>Figure 4.4.1: Structure of the Logic Component</em></p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -517,11 +517,11 @@ in the <code>src/main/resources/view</code> folder. For example, the layout of t
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.4.2 : Structure of Commands in the Logic Component. This diagram shows finer details concerning <code>XYZCommand</code>
+<p><em>Figure 4.4.2: Structure of Commands in the Logic Component. This diagram shows finer details concerning <code>XYZCommand</code>
 and <code>Command</code> in Figure 4.4.1</em></p>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> :
+<p><strong>API</strong>:
 <a href="https://github.com/CS2103AUG2017-W11-B3/main//src/main/java/seedu/address/logic/Logic.java"><code>Logic.java</code></a></p>
 </div>
 <div class="ulist">
@@ -550,7 +550,7 @@ API call:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.4.0c : Interactions Inside the Logic Component for the <code>delete 1</code> Command</em></p>
+<p><em>Figure 4.4.3: Interactions Inside the Logic Component for the <code>delete 1</code> Command</em></p>
 </div>
 </div>
 <div class="sect2">
@@ -561,10 +561,10 @@ API call:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.5.1 : Structure of the Model Component</em></p>
+<p><em>Figure 4.5.1: Structure of the Model Component</em></p>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103AUG2017-W11-B3/main//src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
+<p><strong>API</strong>: <a href="https://github.com/CS2103AUG2017-W11-B3/main//src/main/java/seedu/address/model/Model.java"><code>Model.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Model</code>,</p>
@@ -595,10 +595,10 @@ so that the UI automatically updates when the data in the list change.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 4.6.1 : Structure of the Storage Component</em></p>
+<p><em>Figure 4.6.1: Structure of the Storage Component</em></p>
 </div>
 <div class="paragraph">
-<p><strong>API</strong> : <a href="https://github.com/CS2103AUG2017-W11-B3/main//src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
+<p><strong>API</strong>: <a href="https://github.com/CS2103AUG2017-W11-B3/main//src/main/java/seedu/address/storage/Storage.java"><code>Storage.java</code></a></p>
 </div>
 <div class="paragraph">
 <p>The <code>Storage</code> component,</p>
@@ -658,7 +658,7 @@ The following diagram shows the inheritance diagram for commands:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 5.1.1 : Inheritance diagram for Undo/Redo command</em></p>
+<p><em>Figure 5.1.1: Inheritance diagram for Undo/Redo command</em></p>
 </div>
 <div class="paragraph">
 <p><code>UndoableCommand</code> adds an extra layer between the abstract <code>Command</code> class and concrete commands that can be undone,
@@ -1235,12 +1235,15 @@ the default file which the application automatically saves to, which is <code>ad
 the data in the given filepath, provided it is a valid address book data.</p>
 </div>
 <div class="paragraph">
-<p>The following shows the dependencies of both <code>ImportCommand</code> and <code>ExportCommand</code> :</p>
+<p>The following shows the dependencies of both <code>ImportCommand</code> and <code>ExportCommand</code>:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ImportExportAssocDiagram.png" alt="ImportExportAssocDiagram" width="600">
 </div>
+</div>
+<div class="paragraph">
+<p><em>Figure 5.4.1: Import/Export Association Diagram</em></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1275,12 +1278,15 @@ This will overwrite the current data with the data in <code>backup.xml</code>, m
 <div class="sect3">
 <h4 id="sequence-diagram-2"><a class="link" href="#sequence-diagram-2">5.4.1. Sequence Diagram</a></h4>
 <div class="paragraph">
-<p>The sequence diagram for the command <code>export a.xml</code> is the following :</p>
+<p>The sequence diagram for the command <code>export a.xml</code> is the following:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/ImportExportSequenceDiagram.png" alt="ImportExportSequenceDiagram" width="800">
 </div>
+</div>
+<div class="paragraph">
+<p><em>Figure 5.4.1.1: Sequence Diagram for Export Command</em></p>
 </div>
 <div class="paragraph">
 <p>An <code>import</code> command would be similar, except that it creates a <code>XmlAddressBookStorage</code> object first, calls the <code>readAddressBook</code> method, and then
@@ -1319,7 +1325,7 @@ comparator to reset the sorted list to its default order. <code>ModelManager</co
 and to always reset to default order whenever the filtered list is updated.</p>
 </div>
 <div class="paragraph">
-<p>Commands that changes the viewable list without any sorting are implemented as :</p>
+<p>Commands that changes the viewable list without any sorting are implemented as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1333,7 +1339,7 @@ and to always reset to default order whenever the filtered list is updated.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Whereas commands with sorting (e.g. <code>find</code>) is implemented as :</p>
+<p>Whereas commands with sorting (e.g. <code>find</code>) is implemented as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1351,12 +1357,10 @@ and to always reset to default order whenever the filtered list is updated.</p>
 <h4 id="auto-sort-of-find-command"><a class="link" href="#auto-sort-of-find-command">5.5.1. Auto-Sort of Find Command</a></h4>
 <div class="paragraph">
 <p>The <code>find</code> command, when matching by name, sorts its resulting list by the earliest position of a match with a given keyword.<br>
-This is implemented by creating a <code>earliestIndexOf</code> method in the <code>StringUtil</code> class, which takes in a sentence and a list of keywords, and
-returns the earliest starting index where a part of the sentence matches a keyword, or -1 if there are no match.</p>
+This is implemented by creating a <code>earliestIndexOf</code> method in the <code>StringUtil</code> class, which takes in a sentence and a list of keywords, and returns the earliest starting index where a part of the sentence matches a keyword, or -1 if there are no match.</p>
 </div>
 <div class="paragraph">
-<p>As an example, suppose
-the address book contains three people :</p>
+<p>As an example, suppose the address book contains three people:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1364,13 +1368,19 @@ the address book contains three people :</p>
 </div>
 </div>
 <div class="paragraph">
+<p><em>Figure 5.5.1.1: 3 People Listed in the PersonList</em></p>
+</div>
+<div class="paragraph">
 <p>When a <code>find n/ i</code> command is executed, it will match all three of them (since all their names contains i),
-and show them in this order :</p>
+and show them in this order:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="images/SortListSorted.png" alt="SortListSorted" width="200">
 </div>
+</div>
+<div class="paragraph">
+<p><em>Figure 5.5.1.1: 3 People Listed in the New Order</em></p>
 </div>
 <div class="paragraph">
 <p>as M<em><strong>i</strong></em>chael has i in the 2nd position, Al<em><strong>i</strong></em>cia has an i in the 3rd position, and Dan<em><strong>i</strong></em>el has an i in
@@ -1473,7 +1483,7 @@ The Find command now only use partial matching and has lost the full matching fu
 </table>
 </div>
 <div class="paragraph">
-<p>Previously, the method used for matching was implemented as such :</p>
+<p>Previously, the method used for matching was implemented as such:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1493,7 +1503,7 @@ The Find command now only use partial matching and has lost the full matching fu
 method to return <code>true</code>.<br></p>
 </div>
 <div class="paragraph">
-<p>A slightly modified version of the previous method is created to allow for partial matching as such :</p>
+<p>A slightly modified version of the previous method is created to allow for partial matching as such:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1729,7 +1739,7 @@ the application looks like in each theme:</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 5.7.1: All 5 Themes of the Application</em></p>
+<p><em>Figure 5.10.1: All 5 Themes of the Application</em></p>
 </div>
 <div class="sect3">
 <h4 id="java-implementation-5"><a class="link" href="#java-implementation-5">5.10.1. Java Implementation</a></h4>
@@ -1797,7 +1807,7 @@ input theme&#8217;s CSS. The change in appearance is reflected immediately.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 5.7.1.1: Sequence Diagram for Valid Theme Command</em></p>
+<p><em>Figure 5.10.1.1: Sequence Diagram for Valid Theme Command</em></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -1887,16 +1897,16 @@ specified logging level.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>SEVERE</code> : Critical problem detected which may possibly cause the termination of the application.</p>
+<p><code>SEVERE</code>: Critical problem detected which may possibly cause the termination of the application.</p>
 </li>
 <li>
-<p><code>WARNING</code> : Can continue, but with caution.</p>
+<p><code>WARNING</code>: Can continue, but with caution.</p>
 </li>
 <li>
-<p><code>INFO</code> : Information showing the noteworthy actions by the application.</p>
+<p><code>INFO</code>: Information showing the noteworthy actions by the application.</p>
 </li>
 <li>
-<p><code>FINE</code> : Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of
+<p><code>FINE</code>: Details that is not usually noteworthy but may be useful in debugging e.g. print the actual list instead of
 just its size.</p>
 </li>
 </ul>
@@ -1978,7 +1988,7 @@ use the settings indicated in the screenshot below.</p>
 </div>
 </div>
 <div class="paragraph">
-<p><em>Figure 6.3.1 : Saving documentation as PDF files in Chrome</em></p>
+<p><em>Figure 6.3.1: Saving documentation as PDF files in Chrome</em></p>
 </div>
 </div>
 </div>
@@ -2704,7 +2714,7 @@ and modified.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 08:10:13 +00:00
+Last updated 2017-11-13 08:21:33 +00:00
 </div>
 </div>
 </body>

@@ -123,7 +123,7 @@ The Find command now only use partial matching and has lost the full matching fu
 </table>
 </div>
 <div class="paragraph">
-<p>Previously, the method used for matching was implemented as such :</p>
+<p>Previously, the method used for matching was implemented as such:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -143,7 +143,7 @@ The Find command now only use partial matching and has lost the full matching fu
 method to return <code>true</code>.<br></p>
 </div>
 <div class="paragraph">
-<p>A slightly modified version of the previous method is created to allow for partial matching as such :</p>
+<p>A slightly modified version of the previous method is created to allow for partial matching as such:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -461,7 +461,7 @@ comparator to reset the sorted list to its default order. <code>ModelManager</co
 and to always reset to default order whenever the filtered list is updated.</p>
 </div>
 <div class="paragraph">
-<p>Commands that changes the viewable list without any sorting are implemented as :</p>
+<p>Commands that changes the viewable list without any sorting are implemented as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -475,7 +475,7 @@ and to always reset to default order whenever the filtered list is updated.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Whereas commands with sorting (e.g. <code>find</code>) is implemented as :</p>
+<p>Whereas commands with sorting (e.g. <code>find</code>) is implemented as:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -493,12 +493,10 @@ and to always reset to default order whenever the filtered list is updated.</p>
 <h4 id="auto-sort-of-find-command"><a class="link" href="#auto-sort-of-find-command">Auto-Sort of Find Command</a></h4>
 <div class="paragraph">
 <p>The <code>find</code> command, when matching by name, sorts its resulting list by the earliest position of a match with a given keyword.<br>
-This is implemented by creating a <code>earliestIndexOf</code> method in the <code>StringUtil</code> class, which takes in a sentence and a list of keywords, and
-returns the earliest starting index where a part of the sentence matches a keyword, or -1 if there are no match.</p>
+This is implemented by creating a <code>earliestIndexOf</code> method in the <code>StringUtil</code> class, which takes in a sentence and a list of keywords, and returns the earliest starting index where a part of the sentence matches a keyword, or -1 if there are no match.</p>
 </div>
 <div class="paragraph">
-<p>As an example, suppose
-the address book contains three people :</p>
+<p>As an example, suppose the address book contains three people:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -506,13 +504,19 @@ the address book contains three people :</p>
 </div>
 </div>
 <div class="paragraph">
+<p><em>Figure 5.5.1.1: 3 People Listed in the PersonList</em></p>
+</div>
+<div class="paragraph">
 <p>When a <code>find n/ i</code> command is executed, it will match all three of them (since all their names contains i),
-and show them in this order :</p>
+and show them in this order:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/SortListSorted.png" alt="SortListSorted" width="200">
 </div>
+</div>
+<div class="paragraph">
+<p><em>Figure 5.5.1.1: 3 People Listed in the New Order</em></p>
 </div>
 <div class="paragraph">
 <p>as M<em><strong>i</strong></em>chael has i in the 2nd position, Al<em><strong>i</strong></em>cia has an i in the 3rd position, and Dan<em><strong>i</strong></em>el has an i in
@@ -709,12 +713,15 @@ the default file which the application automatically saves to, which is <code>ad
 the data in the given filepath, provided it is a valid address book data.</p>
 </div>
 <div class="paragraph">
-<p>The following shows the dependencies of both <code>ImportCommand</code> and <code>ExportCommand</code> :</p>
+<p>The following shows the dependencies of both <code>ImportCommand</code> and <code>ExportCommand</code>:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/ImportExportAssocDiagram.png" alt="ImportExportAssocDiagram" width="600">
 </div>
+</div>
+<div class="paragraph">
+<p><em>Figure 5.4.1: Import/Export Association Diagram</em></p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -749,12 +756,15 @@ This will overwrite the current data with the data in <code>backup.xml</code>, m
 <div class="sect3">
 <h4 id="sequence-diagram"><a class="link" href="#sequence-diagram">Sequence Diagram</a></h4>
 <div class="paragraph">
-<p>The sequence diagram for the command <code>export a.xml</code> is the following :</p>
+<p>The sequence diagram for the command <code>export a.xml</code> is the following:</p>
 </div>
 <div class="imageblock">
 <div class="content">
 <img src="../images/ImportExportSequenceDiagram.png" alt="ImportExportSequenceDiagram" width="800">
 </div>
+</div>
+<div class="paragraph">
+<p><em>Figure 5.4.1.1: Sequence Diagram for Export Command</em></p>
 </div>
 <div class="paragraph">
 <p>An <code>import</code> command would be similar, except that it creates a <code>XmlAddressBookStorage</code> object first, calls the <code>readAddressBook</code> method, and then
@@ -848,7 +858,7 @@ Boolean searching will allow them to search using AND and NOT keywords to enable
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 08:10:13 +00:00
+Last updated 2017-11-13 08:21:33 +00:00
 </div>
 </div>
 </body>
