@@ -20,7 +20,9 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>K.N.S. Address Book is a desktop address book application written in Java, created by Team W11-B3 for
-CS2103T: Software Engineering module offered by School of Computing, National University of Singapore.</p>
+CS2103T: Software Engineering module offered by School of Computing, National University of Singapore,
+in AY 2017/2018 Semester 1. This project portfolio page consists of contributions that I have made to
+K.N.S. Address Book during this semester.</p>
 </div>
 <div class="paragraph">
 <p><strong>Code contributed</strong>:
@@ -84,7 +86,12 @@ Returns any person with email containing <code>johndoe</code>.</p>
 <div class="sect3">
 <h4 id="justification"><a class="link" href="#justification">Justification</a></h4>
 <div class="paragraph">
-<p>(justification)</p>
+<p>Previously, the <code>find</code> command only enables users to search their contacts with name query. Hence, users who only
+remember some part of their contact details but do not remember their contact&#8217;s name would find it troublesome when
+searching for their contacts, as they couldn&#8217;t find their contacts with the contact details that they remember.
+Together with Kevin, we enable the <code>find</code> command to accept all field as the query. Kevin implemented the find by tag
+feature, and I implemented find by phone, email, address, and birthday. This feature will help users to find their
+contacts faster and hassle-free.</p>
 </div>
 </div>
 <div class="sect3">
@@ -201,7 +208,7 @@ address of their contact.</p>
 <div class="paragraph">
 <p><code>Since v1.2</code>
 Adds tag(s) to an existing person in the address book.<br>
-Format: <code>addtag INDEX TAG&#8230;&#8203;</code></p>
+Format: <code>addtag INDEX TAG [MORE_TAGS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -244,7 +251,7 @@ Adds a <code>friends</code> tag and a <code>highSchool</code> tag for the 3rd pe
 <div class="paragraph">
 <p><code>Since v1.3</code>
 Deletes given tag from an existing person in the address book.<br>
-Format: <code>deletetag INDEX TAG&#8230;&#8203;</code></p>
+Format: <code>deletetag INDEX TAG [MORE_TAGS]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -281,626 +288,6 @@ Deletes the <code>friends</code> tag and <code>highSchool</code> tag from the 3r
 </li>
 </ul>
 </div>
-</div>
-<div class="sect2">
-<h3 id="locating-persons-code-find-code-or-code-f-code"><a class="link" href="#locating-persons-code-find-code-or-code-f-code">Locating persons: <code>find</code> or <code>f</code></a></h3>
-<div class="paragraph">
-<p>Finds persons whose names or tags, indicated by an optional prefix, contain any of the given keywords. Defaults to find by name.<br>
-Format: <code>find [PREFIX] KEYWORD [MORE_KEYWORDS]</code> or <code>f [PREFIX] KEYWORD [MORE_KEYWORDS]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>The search is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
-</li>
-<li>
-<p>The order of the keywords does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
-</li>
-<li>
-<p>Partial words will be matched e.g. <code>Han</code> can match <code>Hans</code><br>
-See <a href="#partial-matching">Partial Matching</a> section for more details.</p>
-</li>
-<li>
-<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
-</li>
-<li>
-<p>When finding by name, the result will auto sort according to the position of the match. e.g. <code>find Bo</code> will list <code>Bo Alex</code> before <code>Holbo</code> and <code>Holbo</code> before <code>Alexander Bo</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="by-name"><a class="link" href="#by-name">By name</a></h4>
-<div class="paragraph">
-<p>To find by name, you can either use the prefix <code>n/</code> or no prefix at all.<br>
-Examples :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find n/ John</code><br>
-Returns <code>john</code> and <code>John Doe</code></p>
-</li>
-<li>
-<p><code>f John</code> is equivalent with above example.</p>
-</li>
-<li>
-<p><code>find Betsy Tim John</code><br>
-Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code> or that starts with them (e.g. <code>Timothy</code>)</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="by-tag"><a class="link" href="#by-tag">By tag</a></h4>
-<div class="paragraph">
-<p>To find by tag, you can use the prefix <code>t/</code>.<br></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-When finding by tag, it will match person with any tag matching at least one of the keywords.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find t/ family</code><br>
-Returns any person with the tag <code>family</code></p>
-</li>
-<li>
-<p><code>f t/ friends family colleague</code><br>
-Returns any person with at least one of the tags <code>friends</code>, <code>family</code>, or <code>colleague</code>.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="by-any-field-2"><a class="link" href="#by-any-field-2">By any field</a></h4>
-<div class="paragraph">
-<p>To find by other fields, you can use their respective prefixes. (<code>p/</code> for phone, <code>e/</code> for email, <code>b/</code> for birthday,
- <code>a/</code> for address)<br>
-You can search all fields, save for avatar (<code>v/</code>) as of <code>v1.4</code><br>
-All prefixes will show contacts with partial matches of the respective information.<br></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find p/ 1234567</code><br>
-Returns any person with phone number containing <code>1234567</code>.</p>
-</li>
-<li>
-<p><code>find a/ Jurong</code><br>
-Returns any person with address containing <code>Jurong</code> (case-insensitive) in it.</p>
-</li>
-<li>
-<p><code>find b/ 16/02</code><br>
-Returns any person with birthday containing <code>16/02</code>.</p>
-</li>
-<li>
-<p><code>find e/ johndoe</code><br>
-Returns any person with email containing <code>johndoe</code>.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="partial-matching"><a class="link" href="#partial-matching">Partial matching</a></h4>
-<div class="paragraph">
-<p><code>Since v1.2</code><br>
-The Find command accepts partial matches by default.<br>
-Keywords <strong>will match</strong> entries if they are contained within those entries.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-However, vice-versa does not apply!
-i.e. Entries <strong>will not match</strong> keywords if the entries are contained within the keywords.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find mel</code><br>
-Matches <code>Melissa</code> and <code>Amelia</code></p>
-</li>
-<li>
-<p><code>find amelia</code><br>
-Matches <code>Amelia</code> but not <code>Melissa</code> or <code>Mel</code></p>
-</li>
-<li>
-<p><code>find leon</code><br>
-Matches <code>Leonard</code> but not <code>Leo</code></p>
-</li>
-<li>
-<p><code>find t/ frien</code><br>
-Matches any person with a tag that contains <code>frien</code>, e.g. <code>Friends</code> or <code>BestFriends</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect3">
-<h4 id="by-multiple-fields-and-keywords"><a class="link" href="#by-multiple-fields-and-keywords">By multiple fields and keywords</a></h4>
-<div class="paragraph">
-<p><code>In development for v2.0</code></p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="strict-searching-and-search"><a class="link" href="#strict-searching-and-search">Strict searching (AND search)</a></h4>
-<div class="paragraph">
-<p><code>In development for v2.0</code></p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-a-person-code-delete-code-or-code-d-code"><a class="link" href="#deleting-a-person-code-delete-code-or-code-d-code">Deleting a person : <code>delete</code> or <code>d</code></a></h3>
-<div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code> or <code>d INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the most recent listing.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> 1, 2, 3, &#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>delete 2</code><br>
-Deletes the 2nd person in the address book.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>d 1</code><br>
-Deletes the 1st person in the results of the <code>find</code> command.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="selecting-a-person-code-select-code-or-code-s-code"><a class="link" href="#selecting-a-person-code-select-code-or-code-s-code">Selecting a person : <code>select</code> or <code>s</code></a></h3>
-<div class="paragraph">
-<p>Selects the person identified by the index number used in the last person listing.<br>
-Format: <code>select INDEX</code> or <code>s INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Selects the person and loads the Google search page the person at the specified <code>INDEX</code>.</p>
-</li>
-<li>
-<p>The index refers to the index number shown in the most recent listing.</p>
-</li>
-<li>
-<p>The index <strong>must be a positive integer</strong> <code>1, 2, 3, &#8230;&#8203;</code></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>select 2</code><br>
-Selects the 2nd person in the address book.</p>
-</li>
-<li>
-<p><code>find Betsy</code><br>
-<code>s 1</code><br>
-Selects the 1st person in the results of the <code>find</code> command.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="sorting-your-contact-list-code-sort-code"><a class="link" href="#sorting-your-contact-list-code-sort-code">Sorting your contact list : <code>sort</code></a></h3>
-<div class="paragraph">
-<p>Sorts the current list lexicographically by the given prefix, in the given order. If no prefix is given then shows default order.<br>
-Format : <code>sort [PREFIX] [ORDER]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Only the current list is sorted, there is currently no lasting sort on the whole address book.<br></p>
-</li>
-<li>
-<p>ORDER can either be <code>asc</code> for ascending or <code>des</code> for descending. If ORDER is omitted, the list is still sorted ascendingly<br></p>
-</li>
-<li>
-<p>PREFIX can be any prefix with the exception of <code>t/</code> and <code>v/</code>.<br></p>
-</li>
-<li>
-<p>If PREFIX is omitted, the current list is sorted in the order of insertion. You can still reverse the order by using <code>des</code> without any prefix.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>list</code><br>
-<code>sort des</code><br>
-Sorts the list in reverse order of insertion (i.e. the previous list is now reversed)</p>
-</li>
-<li>
-<p><code>find t/ friends</code><br>
-<code>sort n/</code><br>
-Sorts the resulting list from the <code>find</code> command by name, in ascending order.<br>
-(i.e. the list is now a list of people who has a tag matching <code>friends</code> alphabetically by name.)</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="set-favourite-contacts-code-in-development-for-v2-0-code"><a class="link" href="#set-favourite-contacts-code-in-development-for-v2-0-code">Set favourite contacts <code>In development for v2.0</code></a></h3>
-<div class="paragraph">
-<p>Favourite contacts will appear on the top of the contact list.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="contacting-a-person-code-in-development-for-v2-0-code"><a class="link" href="#contacting-a-person-code-in-development-for-v2-0-code">Contacting a person <code>In development for v2.0</code></a></h3>
-<div class="paragraph">
-<p>Directly calls or emails the person(s) identified by index number or otherwise.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="listing-entered-commands-code-history-code-or-code-h-code"><a class="link" href="#listing-entered-commands-code-history-code-or-code-h-code">Listing entered commands : <code>history</code> or <code>h</code></a></h3>
-<div class="paragraph">
-<p>Lists all the commands that you have entered in reverse chronological order.<br>
-Format: <code>history</code> or <code>h</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code-or-code-u-code"><a class="link" href="#undoing-previous-command-code-undo-code-or-code-u-code">Undoing previous command : <code>undo</code> or <code>u</code></a></h3>
-<div class="paragraph">
-<p>Restores the address book to the state before the previous <em>undoable</em> command was executed.<br>
-Format: <code>undo</code> or <code>u</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the address book&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code> and <code>clear</code>).</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>u</code><br>
-The <code>u</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code-or-code-r-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code-or-code-r-code">Redoing the previously undone command : <code>redo</code> or <code>r</code></a></h3>
-<div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.<br>
-Format: <code>redo</code> or <code>r</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>r</code> (reapplies the <code>delete 1</code> command)<br>
-<code>r</code> (reapplies the <code>clear</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code-or-code-c-code"><a class="link" href="#clearing-all-entries-code-clear-code-or-code-c-code">Clearing all entries : <code>clear</code> or <code>c</code></a></h3>
-<div class="paragraph">
-<p>Clears all entries from the address book.<br>
-Format: <code>clear</code> or <code>c</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">Exiting the program : <code>exit</code></a></h3>
-<div class="paragraph">
-<p>Exits the program.<br>
-Format: <code>exit</code></p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="command-cheatsheet"><a class="link" href="#command-cheatsheet">Command Cheatsheet</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>If you&#8217;re in a hurry or just looking for a quick and simple overview, you&#8217;re in the right place! Here you can find the list of commands and how to use them :</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 6%;">
-<col style="width: 25%;">
-<col style="width: 62%;">
-<col style="width: 6%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Action</th>
-<th class="tableblock halign-center valign-top">Command | Alias</th>
-<th class="tableblock halign-left valign-top">Format</th>
-<th class="tableblock halign-left valign-top">Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Add</strong></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>add | a</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>a n/NAME [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [v/AVATAR] [t/TAG]&#8230;&#8203;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>add n/James Ho</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Clear</strong></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>clear | c</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>clear</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Delete</strong></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>delete | d</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete INDEX</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>delete 3</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Edit</strong></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>edit | e</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>e INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [b/BIRTHDAY] [v/AVATAR] [t/TAG]&#8230;&#8203;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>edit 2 n/James Lee</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Add Tag</strong></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>addtag | at</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>at INDEX TAG&#8230;&#8203;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>addtag 2 friends highSchool</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Delete Tag</strong></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>deletag | dt</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dt INDEX TAG&#8230;&#8203;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>deletetag 2 friends highSchool</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Find</strong></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>find | f</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find [PREFIX] KEYWORD [MORE_KEYWORDS]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>find n/ James Jake</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>List</strong></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>list | l</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>list</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>list</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>View Help</strong></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>help</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>help</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Select</strong></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>select | s</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>select INDEX</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>select 2</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Sort</strong></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>sort</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sort [PREFIX] [ORDER]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sort n/ asc</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>History</strong></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>history | h</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>history</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>history</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Undo</strong></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>undo | u</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>undo</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>u</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Redo</strong></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><code>redo | r</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>redo</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>r</code></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect1">
-<h2 id="f-a-q"><a class="link" href="#f-a-q">F.A.Q.</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the application in the other computer and overwrite the empty data file it creates with the file that
-contains the data of your previous Address Book folder.</p>
-</div>
-<div class="paragraph">
-<p><strong>Q</strong>: How often will this application get updated?<br>
-<strong>A</strong>: Every Wednesday, there will be a new release that you can download so that you can keep the application up-to-date.
-However, do take note that updates will cease permanently on the 15 November 2017.</p>
-</div>
-<div class="paragraph">
-<p><strong>Q</strong>: How do I update the application?<br>
-<strong>A</strong>: Download the latest .jar file and replace the previous one that is placed in the root directory. That&#8217;s all you
-need to do!</p>
-</div>
-<div class="paragraph">
-<p><strong>Q</strong>: I&#8217;m having problems with the application that are not addressed in this user guide. Where can I find help?<br>
-<strong>A</strong>: If you have a GitHub account, you can raise a new issue
-<a href="https://github.com/CS2103AUG2017-W11-B3/main/issues">here</a> about your problem.</p>
-</div>
-<div class="paragraph">
-<p><strong>Q</strong>: Can I contribute in this project?<br>
-<strong>A</strong>: Yes, you can! We welcome pull requests. You can submit your pull request to <a href="https://github.com/CS2103AUG2017-W11-B3/main/pulls">our github repository</a>.</p>
-</div>
-<div class="paragraph">
-<p><strong>Q</strong>: Is there a developer guide that I can refer to?<br>
-<strong>A</strong>: Yes! Click <a href="DeveloperGuide.html">here</a> to access it.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="glossary"><a class="link" href="#glossary">Glossary</a></h2>
-<div class="sectionbody">
-<div id="avatar" class="ulist">
-<ul>
-<li>
-<p><strong>Avatar</strong>: A picture representing a particular person in the address book.</p>
-</li>
-</ul>
-</div>
-<div id="cascading-style-sheets" class="ulist">
-<ul>
-<li>
-<p><strong>Cascading Style Sheets (CSS)</strong>: It is a style sheet language used for describing the presentation of a document
-written in a markup language.</p>
-</li>
-</ul>
-</div>
-<div id="command-line-interface" class="ulist">
-<ul>
-<li>
-<p><strong>Command Line Interface (CLI)</strong>: It is an interface which users respond to a visual prompt by typing in a command
-on a specified line, receive a response back from the system, and then enter another command. This goes on back and
-forth.</p>
-</li>
-</ul>
-</div>
-<div id="graphical-user-interface" class="ulist">
-<ul>
-<li>
-<p><strong>Graphical User Interface (GUI)</strong>: It is a graphical (<em>rather than purely textual</em>) user interface to a computer.</p>
-</li>
-</ul>
-</div>
-<div id="java" class="ulist">
-<ul>
-<li>
-<p><strong>Java</strong>: It is a general-purpose computer programming language that is used in many products today. To learn more,
-click <a href="https://go.java/index.html?intcmp=gojava-banner-java-com">here</a>.</p>
-</li>
-</ul>
-</div>
-<div id="mainstream-os" class="ulist">
-<ul>
-<li>
-<p><strong>Mainstream OS</strong>: Examples include Windows, Linux, Unix, Mac OS X.</p>
-</li>
-</ul>
-</div>
 <div class="paragraph">
 <p><mark>End of Extract</mark></p>
 </div>
@@ -908,7 +295,13 @@ click <a href="https://go.java/index.html?intcmp=gojava-banner-java-com">here</a
 <div class="sect3">
 <h4 id="justification-2"><a class="link" href="#justification-2">Justification</a></h4>
 <div class="paragraph">
-<p>(justification)</p>
+<p>Previously, to add or delete a single tag from their contacts, the user can use <code>edit</code> command. This <code>edit</code> command is
+quite troublesome when user only wants to add or delete some tags from a certain contact&#8217;s tag list, as the user needs
+to retype all current tags that they wish to keep. Problems may arise when they wrongly retype the tags that they
+wish to keep, or when they forgot to retype it at all. As such, I developed the add tag and delete tag commands, that
+are useful for adding and deleting tags from a contact&#8217;s tag list, without retyping all the current tags that were not
+changed. Add tag and delete tag also supports add and deleting multiple tags in a single command. This feature will
+help users to add and delete tags faster.</p>
 </div>
 </div>
 <div class="sect3">
@@ -916,6 +309,7 @@ click <a href="https://go.java/index.html?intcmp=gojava-banner-java-com">here</a
 <hr>
 <div class="paragraph">
 <p><mark>Start of Extract [from: Developer Guide]</mark></p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1015,11 +409,107 @@ mistype existing tags or not typing a complete set of existing tags while using 
 </div>
 </div>
 <div class="sect2">
-<h3 id="enhancement-proposed-favourite-contacts"><a class="link" href="#enhancement-proposed-favourite-contacts">Enhancement Proposed: Favourite contacts</a></h3>
+<h3 id="enhancement-added-birthday-field"><a class="link" href="#enhancement-added-birthday-field">Enhancement Added: Birthday Field</a></h3>
+<div class="sect3">
+<h4 id="external-behavior-3"><a class="link" href="#external-behavior-3">External behavior</a></h4>
+<hr>
+<div class="paragraph">
+<p>In K.N.S. Address Book, users can input the birthday details of their contacts in dd/mm/yyyy format. If the user chooses
+not to specify their contact&#8217;s birthday details, the birthday field would be automatically filled by the default value
+(<code>-</code>). Users can specify their contact&#8217;s birthday details through <code>add</code> and <code>edit</code> command.</p>
+</div>
+<hr>
+</div>
 <div class="sect3">
 <h4 id="justification-3"><a class="link" href="#justification-3">Justification</a></h4>
 <div class="paragraph">
-<p>(justification)</p>
+<p>It is important for freelancers to keep a good relation with their clients by remembering their clients' birthday. As
+such, I created a Birthday class which will support the storage of birthday details in K.N.S. Address Book. Users can
+input their contact&#8217;s birthday details via the <code>add</code> command when they add their contact, or via the <code>edit</code> command.
+This birthday field is also searchable via the <code>find</code> command to make it easier for users to find their contacts whose
+birthday is on a certain day. This feature is also useful for Stanley&#8217;s proposed enhancement, birthday countdown &amp;
+reminder feature.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-3"><a class="link" href="#implementation-3">Implementation</a></h4>
+<hr>
+<div class="paragraph">
+<p><mark>Start of Extract [from: Developer Guide]</mark></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="birthday"><a class="link" href="#birthday">Birthday</a></h3>
+<div class="paragraph">
+<p>The Birthday class enables users to store their contact&#8217;s birthday details in K.N.S. Address Book. Birthday details
+should be inputted in dd/mm/yyyy form, and will be stored in the address book in the same form. If the user chooses not
+to enter their contact&#8217;s birthday details, the address book will automatically store the default value for empty
+birthday, which is <code>-</code>, and the value that will appear in the Person Panel for birthday field would be the default
+value.</p>
+</div>
+<div class="sect3">
+<h4 id="java-implementation-3"><a class="link" href="#java-implementation-3">Java Implementation</a></h4>
+<div class="paragraph">
+<p>The Birthday class is implemented in similar way like other fields, such as address, phone, and email.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> Birthday(<span class="predefined-type">String</span> birthday) <span class="directive">throws</span> IllegalValueException {
+        requireNonNull(birthday);
+        <span class="predefined-type">String</span> trimmedBirthday = birthday.trim();
+        <span class="keyword">if</span> (!isValidBirthday(trimmedBirthday)) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalValueException(MESSAGE_BIRTHDAY_CONSTRAINTS);
+        }
+        <span class="local-variable">this</span>.value = trimmedBirthday;
+    }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-3"><a class="link" href="#design-considerations-3">Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Birthday Input Format<br>
+<strong>Alternative 1 (current choice):</strong> Using dd/mm/yyyy as the input format <br>
+<strong>Pros:</strong> It is easier for users to remember the format, as it is the format that is commonly used.<br>
+<strong>Cons:</strong> For some people who use mm/dd/yyyy format instead of dd/mm/yyyy format, they might need some time to adjust to
+K.N.S Address Book&#8217;s date format. K.N.S. Address Book assumes that the date entered is in dd/mm/yyyy format and will
+not send an error message when the number is valid. These users might enter 03/05/2017 which they intend to be 5 March,
+but the address book will interpret it as 3 May.<br>
+<strong>Alternative 2:</strong> Using ddmmyyyy as the input format<br>
+<strong>Pros:</strong> Faster to type as it consists of only numbers and no other characters.<br>
+<strong>Cons:</strong> The format is not easy to read and is similar to phone number format.</p>
+</div>
+<div class="paragraph">
+<p><mark>End of Extract</mark></p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-proposed-favourite-contacts"><a class="link" href="#enhancement-proposed-favourite-contacts">Enhancement Proposed: Favourite contacts</a></h3>
+<div class="sect3">
+<h4 id="justification-4"><a class="link" href="#justification-4">Justification</a></h4>
+<div class="paragraph">
+<p>Some users may have a list of frequently contacted contacts, and in the current version of K.N.S. Address Book, users
+need to search their contacts using the <code>find</code> command every time they want to see the contact details of these
+frequently contacted people. Favourite feature will enable users to set these frequently contacted people as their
+favourite contacts, and these contacts will always appear at the top of the contact list and the search result. This
+feature will help users to find their frequently contacted contacts easily, without using the <code>find</code> command to search
+for these contacts.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="enhancement-proposed-login-page"><a class="link" href="#enhancement-proposed-login-page">Enhancement Proposed: Login Page</a></h3>
+<div class="sect3">
+<h4 id="justification-5"><a class="link" href="#justification-5">Justification</a></h4>
+<div class="paragraph">
+<p>Some users might use K.N.S. Address Book in a shared computer in their workplace. These users might want to keep
+their contact list in private, and not sharing the Address Book with other people who use the same computer. As such,
+a login page would be useful. When K.N.S Address Book is opened, a login page will appear, and the user can type in
+their login details such as username and password. This feature will enable users to keep their contact details in
+private while using a shared computer, as the address book requires password to be accessed.</p>
 </div>
 </div>
 </div>
@@ -1027,6 +517,24 @@ mistype existing tags or not typing a complete set of existing tags while using 
 <h3 id="other-contributions"><a class="link" href="#other-contributions">Other contributions</a></h3>
 <div class="ulist">
 <ul>
+<li>
+<p>Shorthand Alias</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Add shorthand equivalent alias for commands. This feature is useful to increase speed and efficiency while using K.N.S
+Address Book, as users are able to type command with only 1 or 2 alphabets instead of typing the whole word. This feature
+is mainly for professional K.N.S. Address Book users who already memorized the command list.</p>
+</li>
+<li>
+<p>PR : <a href="https://github.com/CS2103AUG2017-W11-B3/main/pull/5">#5</a>, <a href="https://github.com/CS2103AUG2017-W11-B3/main/pull/51">#51</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Set up Travis CI configuration for github repo</p>
+</li>
 <li>
 <p>Reported bugs in team T17-B4 OneBook Address Book</p>
 <div class="ulist">
@@ -1048,7 +556,7 @@ mistype existing tags or not typing a complete set of existing tags while using 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 06:16:19 +00:00
+Last updated 2017-11-13 06:16:35 +00:00
 </div>
 </div>
 </body>

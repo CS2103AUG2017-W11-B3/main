@@ -5,14 +5,14 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.3">
-<title>K.N.S. AddressBook v1.5.0rc - Developer Guide</title>
+<title>K.N.S. AddressBook v1.5.0 - Developer Guide</title>
 <link rel="stylesheet" href="stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="stylesheets/coderay-asciidoctor.css">
 </head>
 <body class="article">
 <div id="header">
-<h1>K.N.S. AddressBook v1.5.0rc - Developer Guide</h1>
+<h1>K.N.S. AddressBook v1.5.0 - Developer Guide</h1>
 </div>
 <div id="content">
 <div id="preamble">
@@ -49,11 +49,12 @@
 <li><a href="#undo-redo-mechanism">4.1. Undo/Redo Mechanism</a></li>
 <li><a href="#person-panel">4.2. Person Panel</a></li>
 <li><a href="#avatar">4.3. Avatar</a></li>
-<li><a href="#partial-find">4.4. Partial Find</a></li>
-<li><a href="#find-by-all-field">4.5. Find by All Field</a></li>
-<li><a href="#add-tag-and-delete-tag">4.6. Add Tag and Delete Tag</a></li>
-<li><a href="#logging">4.7. Logging</a></li>
-<li><a href="#configuration">4.8. Configuration</a></li>
+<li><a href="#birthday">4.4. Birthday</a></li>
+<li><a href="#partial-find">4.5. Partial Find</a></li>
+<li><a href="#find-by-all-field">4.6. Find by All Field</a></li>
+<li><a href="#add-tag-and-delete-tag">4.7. Add Tag and Delete Tag</a></li>
+<li><a href="#logging">4.8. Logging</a></li>
+<li><a href="#configuration">4.9. Configuration</a></li>
 </ul>
 </li>
 <li><a href="#documentation">5. Documentation</a>
@@ -1158,7 +1159,50 @@ replaced by the default placeholder.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="partial-find"><a class="link" href="#partial-find">4.4. Partial Find</a></h3>
+<h3 id="birthday"><a class="link" href="#birthday">4.4. Birthday</a></h3>
+<div class="paragraph">
+<p>The Birthday class enables users to store their contact&#8217;s birthday details in K.N.S. Address Book. Birthday details
+should be inputted in dd/mm/yyyy form, and will be stored in the address book in the same form. If the user chooses not
+to enter their contact&#8217;s birthday details, the address book will automatically store the default value for empty
+birthday, which is <code>-</code>, and the value that will appear in the Person Panel for birthday field would be the default
+value.</p>
+</div>
+<div class="sect3">
+<h4 id="java-implementation-2"><a class="link" href="#java-implementation-2">4.4.1. Java Implementation</a></h4>
+<div class="paragraph">
+<p>The Birthday class is implemented in similar way like other fields, such as address, phone, and email.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">    <span class="directive">public</span> Birthday(<span class="predefined-type">String</span> birthday) <span class="directive">throws</span> IllegalValueException {
+        requireNonNull(birthday);
+        <span class="predefined-type">String</span> trimmedBirthday = birthday.trim();
+        <span class="keyword">if</span> (!isValidBirthday(trimmedBirthday)) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalValueException(MESSAGE_BIRTHDAY_CONSTRAINTS);
+        }
+        <span class="local-variable">this</span>.value = trimmedBirthday;
+    }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.2. Design Considerations</a></h4>
+<div class="paragraph">
+<p><strong>Aspect:</strong> Birthday Input Format<br>
+<strong>Alternative 1 (current choice):</strong> Using dd/mm/yyyy as the input format <br>
+<strong>Pros:</strong> It is easier for users to remember the format, as it is the format that is commonly used.<br>
+<strong>Cons:</strong> For some people who use mm/dd/yyyy format instead of dd/mm/yyyy format, they might need some time to adjust to
+K.N.S Address Book&#8217;s date format. K.N.S. Address Book assumes that the date entered is in dd/mm/yyyy format and will
+not send an error message when the number is valid. These users might enter 03/05/2017 which they intend to be 5 March,
+but the address book will interpret it as 3 May.<br>
+<strong>Alternative 2:</strong> Using ddmmyyyy as the input format<br>
+<strong>Pros:</strong> Faster to type as it consists of only numbers and no other characters.<br>
+<strong>Cons:</strong> The format is not easy to read and is similar to phone number format.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="partial-find"><a class="link" href="#partial-find">4.5. Partial Find</a></h3>
 <div class="paragraph">
 <p>The partial matching of the Find command is implemented by creating a method in the <code>StringUtil</code> class with the help of
 the <code>regionMatches</code> method from the java <code>String</code> class.
@@ -1220,7 +1264,7 @@ method to return <code>true</code>.<br></p>
 (<em>e.g.`NameContainsKeywordsPredicate`</em>) with the new method so that the Find command actually uses partial matching.</p>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-4"><a class="link" href="#design-considerations-4">4.4.1. Design Considerations</a></h4>
+<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.1. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Exclusive use of partial matching.<br>
 <strong>Alternative 1 (current choice):</strong> Find command exclusively uses partial matching.<br>
@@ -1246,7 +1290,7 @@ partial matching.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="find-by-all-field"><a class="link" href="#find-by-all-field">4.5. Find by All Field</a></h3>
+<h3 id="find-by-all-field"><a class="link" href="#find-by-all-field">4.6. Find by All Field</a></h3>
 <div class="paragraph">
 <p>The find by all field feature is implemented by adding one argument, prefix of field that want to be searched, to the
 <code>find</code> command parameter. If the user does not specify the prefix, the address book will automatically search the query
@@ -1255,7 +1299,7 @@ implemented in &lt;field name&gt;ContainsKeywordPredicate class (i.e. NameContai
 AddressContainsKeywordPredicate) inside Model component.</p>
 </div>
 <div class="sect3">
-<h4 id="java-implementation-2"><a class="link" href="#java-implementation-2">4.5.1. Java Implementation</a></h4>
+<h4 id="java-implementation-3"><a class="link" href="#java-implementation-3">4.6.1. Java Implementation</a></h4>
 <div class="paragraph">
 <p>The FindCommandParser is now able to parse the additional prefix argument, as shown in the code snippet below:</p>
 </div>
@@ -1300,7 +1344,7 @@ The method is similar for other field.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-5"><a class="link" href="#design-considerations-5">4.5.2. Design Considerations</a></h4>
+<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.6.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation of find by all field<br>
 <strong>Alternative 1 (current choice):</strong> Enables user to find by all field (name, phone, email, address, birthday, and
@@ -1333,7 +1377,7 @@ address of their contact.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="add-tag-and-delete-tag"><a class="link" href="#add-tag-and-delete-tag">4.6. Add Tag and Delete Tag</a></h3>
+<h3 id="add-tag-and-delete-tag"><a class="link" href="#add-tag-and-delete-tag">4.7. Add Tag and Delete Tag</a></h3>
 <div class="paragraph">
 <p>Add tag and delete tag mechanism is facilitated by the <code>addtag</code> command and <code>deletetag</code> command, or their equivalent
 aliases <code>at</code> and <code>dt</code>, which is useful for adding and deleting tags in a person&#8217;s tag list. On previous versions
@@ -1343,7 +1387,7 @@ didn&#8217;t want to edit. <code>addtag</code> command and <code>deletetag</code
 command, without retyping all the current tags.</p>
 </div>
 <div class="sect3">
-<h4 id="java-implementation-3"><a class="link" href="#java-implementation-3">4.6.1. Java Implementation</a></h4>
+<h4 id="java-implementation-4"><a class="link" href="#java-implementation-4">4.7.1. Java Implementation</a></h4>
 <div class="paragraph">
 <p>As <code>addtag</code> and <code>deletetag</code> are commands, their implementations are a part of Logic component in the address book.
 The implementation of add tag and delete tag can be found in AddTagCommand and DeleteTagCommand. AddTagCommand and
@@ -1409,7 +1453,7 @@ like <code>addtag</code> command, shown by the following code snippet:</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations-6"><a class="link" href="#design-considerations-6">4.6.2. Design Considerations</a></h4>
+<h4 id="design-considerations-7"><a class="link" href="#design-considerations-7">4.7.2. Design Considerations</a></h4>
 <div class="paragraph">
 <p><strong>Aspect:</strong> Implementation of AddTagCommand and DeleteTagCommand<br>
 <strong>Alternative 1 (current choice):</strong> Implementing a new command <code>addtag</code> and <code>deletetag</code> instead of using the existing
@@ -1425,7 +1469,7 @@ mistype existing tags or not typing a complete set of existing tags while using 
 </div>
 </div>
 <div class="sect2">
-<h3 id="logging"><a class="link" href="#logging">4.7. Logging</a></h3>
+<h3 id="logging"><a class="link" href="#logging">4.8. Logging</a></h3>
 <div class="paragraph">
 <p>We are using <code>java.util.logging</code> package for logging. The <code>LogsCenter</code> class is used to manage the logging levels and
 logging destinations.</p>
@@ -1467,7 +1511,7 @@ just its size.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuration"><a class="link" href="#configuration">4.8. Configuration</a></h3>
+<h3 id="configuration"><a class="link" href="#configuration">4.9. Configuration</a></h3>
 <div class="paragraph">
 <p>Certain properties of the application can be controlled (e.g App name, logging level) through the configuration file
 (<em>default:</em> <code>config.json</code>).</p>
@@ -2324,7 +2368,7 @@ and modified.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-13 06:16:19 +00:00
+Last updated 2017-11-13 06:16:35 +00:00
 </div>
 </div>
 </body>
